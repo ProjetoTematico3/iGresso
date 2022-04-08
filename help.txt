@@ -2,6 +2,7 @@
 Abrir terminal do vscode
 $ npm install express   
 $ npm install ejs
+$ npm install bcryptjs 
 
 PARA EXECUTAR A APLICAÇÃO
 $ node src/index.js
