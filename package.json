@@ -1,0 +1,28 @@
+{
+  "name": "igresso",
+  "version": "1.0.0",
+  "description": "Aplicativo de compra de ingresso e review de filmes",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjetoTematico3/iGresso.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProjetoTematico3/iGresso/issues"
+  },
+  "homepage": "https://github.com/ProjetoTematico3/iGresso#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
