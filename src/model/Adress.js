@@ -23,5 +23,5 @@ const Adress = db.define('Adress', {
         allowNull: false,
     }
 });
-//News.hasMany(User);
+
 module.exports = Adress;

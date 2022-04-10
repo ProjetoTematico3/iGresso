@@ -21,12 +21,12 @@ const Ingress = db.define('Ingress', {
 
 Ingress.belongsTo(Schedule, {
     constraint: true,
-    foreignKey: 'id_Schedule'
+    foreignKey: 'id_horario'
 });
 
 Ingress.belongsTo(Seat, {
     constraint: true,
-    foreignKey: "id_Seat"
+    foreignKey: "id_lugar"
 });
 
 Ingress.belongsTo(Item, {
@@ -36,7 +36,7 @@ Ingress.belongsTo(Item, {
 
 Ingress.belongsTo(Movie, {
     constraint: true,
-    foreignKey: "id_Movie"
+    foreignKey: "id_filme"
 });
 
 

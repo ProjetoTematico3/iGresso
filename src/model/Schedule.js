@@ -24,5 +24,5 @@ const Schedule = db.define('Schedule', {
         allowNull: false,
     }
 });
-//News.hasMany(User);
+
 module.exports = Schedule;

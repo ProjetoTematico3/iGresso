@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 const Adress = require('./Adress');
+const Review = require('./Review');
+const News = require('./News');
+const Order = require('./Order');
 
 const User = db.define('User', {
     id: {
@@ -35,11 +38,20 @@ const User = db.define('User', {
 
 User.belongsTo(Adress, {
     constraint: true,
-    foreignKey: "id_adress"
-
+    foreignKey: "id_endereco"
 });
 
+User.hasMany(Review, {
+    foreignKey: "id_review"
+});
 
+User.hasMany(News, {
+    foreignKey: "id_noticia"
+});
+
+User.hasMany(Order, {
+    foreignKey: "id_pedido"
+});
 
 
 module.exports = User;

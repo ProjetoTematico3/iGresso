@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const Member = require('./Member');
 
 const Team = db.define('Team', {
     id: {
@@ -14,5 +15,9 @@ const Team = db.define('Team', {
         allowNull: false,
     }
 });
-//News.hasMany(User);
+
+Team.hasMany(Member, {
+    foreignKey: "id_membro"
+});
+
 module.exports = Team;

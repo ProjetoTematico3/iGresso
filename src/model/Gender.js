@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const Movie = require('./Movie');
 
 const Gender = db.define('Gender', {
     id: {
@@ -14,5 +15,9 @@ const Gender = db.define('Gender', {
         allowNull: false,
     }
 });
-//News.hasMany(User);
+
+Gender.hasMany(Movie, {
+    foreignKey: 'id_filme'
+});
+
 module.exports = Gender;

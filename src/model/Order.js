@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 const PaymentMethod = require('./PaymentMethod');
+const Item = require('./Item');
+const Combo = require('./Combo');
 
 const Order = db.define('Order', {
     id: {
@@ -24,7 +26,15 @@ const Order = db.define('Order', {
 
 Order.belongsTo(PaymentMethod, {
     constraint: true,
-    foreignKey: 'id_PaymentMethod'
+    foreignKey: 'id_metodo_pagamento'
+});
+
+Order.hasMany(Item, {
+    foreignKey: 'id_item'
+});
+
+Order.hasMany(Combo, {
+    foreignKey: 'id_combo'
 });
 
 module.exports = Order;

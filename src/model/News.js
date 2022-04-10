@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const User = require('../model/User');
+const Image = require('./Image');
 
 const News = db.define('New', {
     id: {
@@ -18,6 +18,10 @@ const News = db.define('New', {
         type: Sequelize.STRING,
         allowNull: false,
     }
-})
+});
+
+News.hasMany(Image, {
+    foreignKey: 'id_image'
+});
 
 module.exports = News;

@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const Product = require('./Product');
 
 const Combo = db.define('Combo', {
     id: {
@@ -19,5 +20,9 @@ const Combo = db.define('Combo', {
     },
 
 });
-//News.hasMany(User);
+
+Combo.hasMany(Product, {
+    foreignKey: "id_produto"
+});
+
 module.exports = Combo;

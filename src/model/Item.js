@@ -14,7 +14,7 @@ const Item = db.define('Item', {
     },
 
     quantidade: {
-        type: Sequelize.DOUBLE,
+        type: Sequelize.INTEGER,
         allowNull: false,
     },
 });

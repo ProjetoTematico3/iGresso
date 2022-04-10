@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 const Team = require('./Team');
+const Image = require('./Image');
 
 const Movie = db.define('Movie', {
     id: {
@@ -32,7 +33,11 @@ const Movie = db.define('Movie', {
 
 Movie.belongsTo(Team, {
     constraint: true,
-    foreignKey: "id_team"
+    foreignKey: "id_time"
+});
+
+Movie.hasMany(Image, {
+    foreignKey: "id_imagem"
 });
 
 module.exports = Movie;

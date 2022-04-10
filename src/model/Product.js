@@ -25,5 +25,5 @@ const Product = db.define('Product', {
     },
 
 });
-//News.hasMany(User);
+
 module.exports = Product;
