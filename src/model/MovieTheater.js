@@ -1,23 +1,24 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const User = require('../model/User');
+const Adress = require('./Adress');
 
-const News = db.define('New', {
+const MovieTheater = db.define('MovieTheater', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    titulo: {
+    nome: {
         type: Sequelize.STRING,
         allowNull: false,
     },
 
-    texto: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    }
 })
 
-module.exports = News;
+MovieTheater.belongsTo(Adress, {
+    constraint: true,
+    foreignKey: "id_adress"
+});
+
+module.exports = MovieTheater;

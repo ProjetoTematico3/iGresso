@@ -1,23 +1,32 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const User = require('../model/User');
 
-const News = db.define('New', {
+const Movie = db.define('Movie', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    titulo: {
+    nome: {
         type: Sequelize.STRING,
         allowNull: false,
     },
 
-    texto: {
-        type: Sequelize.STRING,
+    descricao: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-    }
-})
+    },
 
-module.exports = News;
+    dt_lancamento: {
+        type: Sequelize.DATE,
+        allowNull: false,
+    },
+
+    duracao: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+});
+
+module.exports = Movie;

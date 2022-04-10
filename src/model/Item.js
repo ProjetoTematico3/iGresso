@@ -1,23 +1,22 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const User = require('../model/User');
 
-const News = db.define('New', {
+const Item = db.define('Item', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    titulo: {
-        type: Sequelize.STRING,
+    valor: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
     },
 
-    texto: {
-        type: Sequelize.STRING,
+    quantidade: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
-    }
-})
+    },
+});
 
-module.exports = News;
+module.exports = Item;

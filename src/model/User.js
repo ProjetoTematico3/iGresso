@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-
+const Adress = require('./Adress');
 
 const User = db.define('User', {
     id: {
@@ -12,7 +12,7 @@ const User = db.define('User', {
     email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique:true,
+        unique: true,
     },
 
     senha: {
@@ -20,17 +20,25 @@ const User = db.define('User', {
         allowNull: false,
     },
 
-    nome:{
+    nome: {
         type: Sequelize.STRING,
         allowNull: false
     },
 
-    tipo_usuario:{
+    tipo_usuario: {
         type: Sequelize.INTEGER,
         defaultValue: 0, // 0: root | 1: admin | 2: funcionario | 3: cliente
         allowNull: false,
     }
-    
-})
- 
+
+});
+
+User.belongsTo(Adress, {
+    constraint: true,
+    foreignKey: "id_adress"
+});
+
+
+
+
 module.exports = User;

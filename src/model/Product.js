@@ -1,23 +1,29 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const User = require('../model/User');
 
-const News = db.define('New', {
+const Product = db.define('Product', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    titulo: {
+
+    nome: {
         type: Sequelize.STRING,
         allowNull: false,
     },
 
-    texto: {
-        type: Sequelize.STRING,
+    preco: {
+        type: Sequelize.DOUBLE,
         allowNull: false,
-    }
-})
+    },
 
-module.exports = News;
+    quantidade: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+
+});
+//News.hasMany(User);
+module.exports = Product;
