@@ -36,6 +36,7 @@ const User = db.define('User', {
 User.belongsTo(Adress, {
     constraint: true,
     foreignKey: "id_adress"
+
 });
 
 

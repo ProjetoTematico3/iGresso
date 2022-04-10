@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../database');
 const Adress = require('./Adress');
 
+
 const MovieTheater = db.define('MovieTheater', {
     id: {
         type: Sequelize.INTEGER,

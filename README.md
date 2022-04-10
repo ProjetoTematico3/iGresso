@@ -3,7 +3,7 @@
 <p align="center">
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Como iniciar o projeto?">Como Iniciar o projeto</a>
+  <a href="#-como-iniciar-o-projeto">Como Iniciar o projeto</a>
 </p>
 
 

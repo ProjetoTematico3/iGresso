@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const Team = require('./Team');
 
 const Movie = db.define('Movie', {
     id: {
@@ -27,6 +28,11 @@ const Movie = db.define('Movie', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+});
+
+Movie.belongsTo(Team, {
+    constraint: true,
+    foreignKey: "id_team"
 });
 
 module.exports = Movie;

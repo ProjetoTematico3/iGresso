@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 
 
-db.sync();
+//db.sync();
 
 /*(async() => {
     try {
