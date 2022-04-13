@@ -1,0 +1,142 @@
+:root{
+    --purple: rgba(171,71,188,1);
+    --grey:rgba(94,94,94,1);
+    --dark-blue:rgba(2,90,191,1);
+    --dark-grey-1:rgba(58,56,69,1);
+    --dark-grey-2:rgba(51,50,56,1);
+    --dark-grey-3:rgba(56,56,56,1);
+    --gradient-90deg: linear-gradient(90deg, rgba(13,243,255,1) 0%, rgba(41,177,255,1) 14.9%, rgba(28,104,255,1) 32.2%, rgba(123,77,240,1) 46.7%, rgba(190,51,255,1) 64.3%, rgba(202,24,222,1) 85.1%, rgba(252,5,231,1) 100%);
+    
+}
+
+a{
+    color: white !important;
+}
+
+body{
+    background: var(--dark-grey-1);
+}
+
+.container-login{
+    display: flex;
+    height: 100vh;
+}
+
+.container-login .container-form{
+    margin: auto;
+}
+
+.container-sign{
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.form-horizontal{
+    min-width: 24rem;
+}
+
+.i-input{
+    height: 3.2rem !important;
+    background: transparent;
+}
+
+.i-input:focus{
+    background: transparent;
+}
+
+.i-input-purple{
+    color: var(--purple) !important;
+    border: 1px solid var(--purple);
+    outline-color: 1px solid var(--purple) !important;
+}
+.i-input-purple::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: var(--purple);
+}
+.i-input-purple:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: var(--purple);
+   opacity: 1;
+}
+.i-input-purple::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: var(--purple);
+   opacity: 1;
+}
+.i-input-purple:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: var(--purple);
+}
+.i-input-purple::-ms-input-placeholder { /* Microsoft Edge */
+   color: var(--purple);
+}
+.i-input-purple::placeholder { /* padrao*/
+   color: var(--purple);
+}
+
+.i-text-purple{
+    color: var(--purple) !important;
+}
+
+.logo-login{
+    margin-top: 1rem;
+    margin-bottom: 6rem !important;
+    display: flex;
+}
+
+.logo-login .igresso-logo{
+    margin: auto;
+}
+
+.igresso-logo{
+    background-image: url(../assets/ticket.svg);
+    display: block;
+    background-size: 78px;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-position-x: 10%;
+    height: 7rem;
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.igresso-logo::before{
+    content: "iGresso";
+    color: var(--purple);
+    display: block;
+    font-size: 41pt;
+    font-weight: 700;
+    margin-left: 35%;
+    margin-bottom: 2rem;
+}
+
+.navbar-brand{
+    width: 20rem;
+    margin-top: 1.5rem;
+}
+
+
+.navbar{
+    padding-bottom:8px;
+    background:
+      var(--gradient-90deg)
+      left 
+      bottom 
+      no-repeat; 
+    background-size:100% 8px ;
+    border-image: 3px solid  !important;
+    padding: 0px 2rem !important;
+}
+
+.navbar-darkgrey{
+    background-color: var(--dark-grey-2) !important;
+}
+
+.nav-link.active{
+    color: var(--purple) !important;
+}
+
+.nav-item{
+    margin: 0 1rem !important;
+}
+
+.navbar-toggler{
+    color: var(--purple) !important;
+}
