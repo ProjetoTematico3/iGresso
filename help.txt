@@ -3,6 +3,8 @@ Abrir terminal do vscode
 $ npm install express   
 $ npm install ejs
 $ npm install bcryptjs 
+$ npm i passport-local
+$ npm i passport express-session
 
 PARA EXECUTAR A APLICAÇÃO
 $ node src/index.js

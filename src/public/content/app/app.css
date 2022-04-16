@@ -38,6 +38,7 @@ body{
 .i-input{
     height: 3.2rem !important;
     background: transparent;
+    margin: 1.5rem 0 !important;
 }
 
 .i-input:focus{

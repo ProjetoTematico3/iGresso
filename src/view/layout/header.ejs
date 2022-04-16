@@ -48,16 +48,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Administração</a>
                     </li>
-                  
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Entrar</a>
-                    </li>
-                   
+
+                    <% if (!!locals.user) {%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-user"></i>
+                                <%= user.nome %>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Logout">Sair</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Login">Entrar</a>
+                        </li>
+                    <% } %>
+
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     <div class="container">
 
         <div id="app-page">
