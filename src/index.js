@@ -7,7 +7,7 @@ const passport = require('passport')
 const session = require('express-session');
 
 const db = require('./database');
-const User = require('./model/User');
+//const User = require('./model/User');
 const sequelize = require('./database');
 //const Item = require('./model/Item');
 //const Order = require('./model/Order');
