@@ -21,7 +21,7 @@ const News = db.define('New', {
 });
 
 News.hasMany(Image, {
-    foreignKey: 'id_image'
+    foreignKey: 'id_noticias'
 });
 
 module.exports = News;

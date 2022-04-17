@@ -33,11 +33,11 @@ const Movie = db.define('Movie', {
 
 Movie.belongsTo(Team, {
     constraint: true,
-    foreignKey: "id_time"
+    foreignKey: "id_filme"
 });
 
 Movie.hasMany(Image, {
-    foreignKey: "id_imagem"
+    foreignKey: "id_filme"
 });
 
 module.exports = Movie;

@@ -29,12 +29,14 @@ Order.belongsTo(PaymentMethod, {
     foreignKey: 'id_metodo_pagamento'
 });
 
+
 Order.hasMany(Item, {
-    foreignKey: 'id_item'
+    foreignKey: 'id_pedido'
 });
 
+
 Order.hasMany(Combo, {
-    foreignKey: 'id_combo'
+    foreignKey: 'id_pedido'
 });
 
 module.exports = Order;

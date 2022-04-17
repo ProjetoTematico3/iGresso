@@ -17,7 +17,7 @@ const Gender = db.define('Gender', {
 });
 
 Gender.hasMany(Movie, {
-    foreignKey: 'id_filme'
+    foreignKey: 'id_genero'
 });
 
 module.exports = Gender;

@@ -17,7 +17,7 @@ const Team = db.define('Team', {
 });
 
 Team.hasMany(Member, {
-    foreignKey: "id_membro"
+    foreignKey: "id_time"
 });
 
 module.exports = Team;

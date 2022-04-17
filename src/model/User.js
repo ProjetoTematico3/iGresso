@@ -36,21 +36,22 @@ const User = db.define('User', {
 
 });
 
+
 User.belongsTo(Adress, {
     constraint: true,
     foreignKey: "id_endereco"
 });
 
 User.hasMany(Review, {
-    foreignKey: "id_review"
+    foreignKey: "id_usuario"
 });
 
 User.hasMany(News, {
-    foreignKey: "id_noticia"
+    foreignKey: "id_usuario"
 });
 
 User.hasMany(Order, {
-    foreignKey: "id_pedido"
+    foreignKey: "id_usuario"
 });
 
 

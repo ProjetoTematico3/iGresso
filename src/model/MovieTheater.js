@@ -25,15 +25,15 @@ MovieTheater.belongsTo(Adress, {
 });
 
 MovieTheater.hasMany(Room, {
-    foreignKey: "id_sala"
+    foreignKey: "id_cinema"
 });
 
 MovieTheater.hasMany(User, {
-    foreignKey: "id_usuario"
+    foreignKey: "id_cinema"
 });
 
 MovieTheater.hasMany(Ingress, {
-    foreignKey: "id_ingresso"
+    foreignKey: "id_cinema"
 });
 
 module.exports = MovieTheater;

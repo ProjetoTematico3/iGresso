@@ -9,28 +9,28 @@ const session = require('express-session');
 const db = require('./database');
 const User = require('./model/User');
 const sequelize = require('./database');
-const PaymentMethod = require('./model/PaymentMethod');
-const Order = require('./model/Order');
+//const Item = require('./model/Item');
+//const Order = require('./model/Order');
 
 //const repository = require('./model/modelRepository'); 
 
 
 require('./authentication')(passport);
-app.set('trust proxy', 1) 
+app.set('trust proxy', 1)
 app.use(session({
-  secret: 'macarena',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 30 * 60 * 1000 }
+    secret: 'macarena',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 60 * 1000 }
 }))
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  if( req.session.passport)
-    res.locals.user = req.session.passport.user;
-  next();
+    if (req.session.passport)
+        res.locals.user = req.session.passport.user;
+    next();
 });
 
 app.use(routes);
@@ -39,7 +39,6 @@ app.use('/src/public', express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
-
 
 //db.sync();
 

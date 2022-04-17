@@ -22,7 +22,7 @@ const Combo = db.define('Combo', {
 });
 
 Combo.hasMany(Product, {
-    foreignKey: "id_produto"
+    foreignKey: "id_combo"
 });
 
 module.exports = Combo;

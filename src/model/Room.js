@@ -18,11 +18,11 @@ const Room = db.define('Room', {
 });
 
 Room.hasMany(Schedule, {
-    foreignKey: "id_horario"
+    foreignKey: "id_sala"
 });
 
 Room.hasMany(Seat, {
-    foreignKey: "id_lugar"
+    foreignKey: "id_sala"
 });
 
 module.exports = Room;
