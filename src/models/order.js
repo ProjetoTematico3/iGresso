@@ -1,6 +1,7 @@
 'use strict';
 const {
-    Model
+    Model,
+    Sequelize
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Order extends Model {
@@ -10,7 +11,27 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+
+            Order.belongsTo(models.PaymentMethod, {
+                constraints: true,
+                foreignKey: 'id_pedido',
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            });
+
+            Order.hasMany(models.Item, {
+                constraints: true,
+                foreignKey: 'id_pedido',
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            });
+
+            Order.hasMany(models.Combo, {
+                constraints: true,
+                foreignKey: 'id_pedido',
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            });
         }
     }
     Order.init({

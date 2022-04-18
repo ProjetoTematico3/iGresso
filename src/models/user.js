@@ -14,16 +14,33 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             User.belongsTo(models.Adress, {
+                constraints: true,
                 foreignKey: "id_usuario",
                 onDelete: 'cascade',
                 onUpdate: 'cascade'
             });
 
-            User.hasMany(models.order, {
+            User.hasMany(models.Order, {
+                constraints: true,
                 foreignKey: "id_usuario",
                 onDelete: 'cascade',
                 onUpdate: 'cascade'
             });
+
+            User.hasMany(models.News, {
+                constraints: true,
+                foreignKey: "id_usuario",
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            });
+
+            User.hasMany(models.Review, {
+                constraints: true,
+                foreignKey: "id_usuario",
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            });
+
         }
     }
     User.init({

@@ -31,6 +31,17 @@ module.exports = {
                 allowNull: false,
             },
 
+            id_cinema: {
+                type: Sequelize.DataTypes.INTEGER,
+                references: {
+                    model: {
+                        tableName: 'MovieTheaters',
+                    },
+                    key: 'id'
+                },
+                allowNull: true
+            },
+
             /*id_endereco: {
                 type: Sequelize.DataTypes.INTEGER,
                 references: {

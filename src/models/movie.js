@@ -4,7 +4,7 @@ const {
     Sequelize
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Adress extends Model {
+    class Movie extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -12,34 +12,50 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
 
+            Movie.belongsTo(models.Team, {
+                constraint: true,
+                foreignKey: "id_filme",
+                onDelete: 'cascade',
+                onUpdate: 'cascade',
+            });
+
+            Movie.hasMany(models.Image, {
+                constraint: true,
+                foreignKey: "id_filme",
+                onDelete: 'cascade',
+                onUpdate: 'cascade'
+            });
         }
     }
-    Adress.init({
-
+    Movie.init({
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
         },
-        bairro: {
+        nome: {
             type: Sequelize.STRING,
             allowNull: false,
         },
 
-        numero: {
+        descricao: {
             type: Sequelize.INTEGER,
             allowNull: false,
         },
 
-        cidade: {
-            type: Sequelize.STRING,
+        dt_lancamento: {
+            type: Sequelize.DATE,
             allowNull: false,
-        }
+        },
 
+        duracao: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
     }, {
         sequelize,
-        modelName: 'Adress',
+        modelName: 'Movie',
     });
-    return Adress;
+    return Movie;
 };

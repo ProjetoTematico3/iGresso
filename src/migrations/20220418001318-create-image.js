@@ -1,44 +1,39 @@
 'use strict';
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Adresses', {
+        await queryInterface.createTable('Images', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            bairro: {
+            diretorio: {
                 type: Sequelize.STRING
             },
-            numero: {
+            tipo_imagem: {
                 type: Sequelize.INTEGER
             },
-            cidade: {
-                type: Sequelize.STRING
-            },
-            id_usuario: {
+            id_filme: {
                 type: Sequelize.DataTypes.INTEGER,
                 references: {
                     model: {
-                        tableName: 'Users',
-                        //schema: 'public'
+                        tableName: 'Movies',
                     },
                     key: 'id'
                 },
                 allowNull: true
             },
-            id_cinema: {
+            id_noticias: {
                 type: Sequelize.DataTypes.INTEGER,
                 references: {
                     model: {
-                        tableName: 'MovieTheaters',
+                        tableName: 'News',
                     },
                     key: 'id'
                 },
                 allowNull: true
             },
-
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
@@ -50,6 +45,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('Adresses');
+        await queryInterface.dropTable('Images');
     }
 };
