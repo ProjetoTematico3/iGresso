@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
             Combo.hasMany(models.Product, {
                 constraints: true,
                 foreignKey: "id_combo",
-                onDelete: true,
-                onUpdate: true
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
         }
     }

@@ -21,6 +21,16 @@ module.exports = {
                 },
                 allowNull: true
             },
+            id_sala: {
+                type: Sequelize.DataTypes.INTEGER,
+                references: {
+                    model: {
+                        tableName: 'Rooms',
+                    },
+                    key: 'id'
+                },
+                allowNull: true
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

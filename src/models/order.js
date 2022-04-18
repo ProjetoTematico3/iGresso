@@ -15,22 +15,22 @@ module.exports = (sequelize, DataTypes) => {
             Order.belongsTo(models.PaymentMethod, {
                 constraints: true,
                 foreignKey: 'id_pedido',
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             Order.hasMany(models.Item, {
                 constraints: true,
                 foreignKey: 'id_pedido',
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             Order.hasMany(models.Combo, {
                 constraints: true,
                 foreignKey: 'id_pedido',
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
         }
     }

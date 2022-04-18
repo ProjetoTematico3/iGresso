@@ -15,15 +15,15 @@ module.exports = (sequelize, DataTypes) => {
             MovieTheater.belongsTo(models.Adress, {
                 foreignKey: "id_cinema",
                 constraint: true,
-                onDelete: true,
-                onUpdate: true
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             MovieTheater.hasMany(models.Room, {
                 foreignKey: "id_cinema",
                 constraint: true,
-                onDelete: true,
-                onUpdate: true
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             MovieTheater.hasMany(models.User, {

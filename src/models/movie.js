@@ -15,15 +15,15 @@ module.exports = (sequelize, DataTypes) => {
             Movie.belongsTo(models.Team, {
                 constraint: true,
                 foreignKey: "id_filme",
-                onDelete: 'cascade',
-                onUpdate: 'cascade',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             });
 
             Movie.hasMany(models.Image, {
                 constraint: true,
                 foreignKey: "id_filme",
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
         }
     }

@@ -16,22 +16,22 @@ module.exports = (sequelize, DataTypes) => {
             User.belongsTo(models.Adress, {
                 constraints: true,
                 foreignKey: "id_usuario",
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             User.hasMany(models.Order, {
                 constraints: true,
                 foreignKey: "id_usuario",
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             User.hasMany(models.News, {
                 constraints: true,
                 foreignKey: "id_usuario",
-                onDelete: 'cascade',
-                onUpdate: 'cascade'
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE'
             });
 
             User.hasMany(models.Review, {

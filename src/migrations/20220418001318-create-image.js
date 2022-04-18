@@ -24,7 +24,7 @@ module.exports = {
                 },
                 allowNull: true
             },
-            id_noticias: {
+            id_noticia: {
                 type: Sequelize.DataTypes.INTEGER,
                 references: {
                     model: {
