@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/ProjetoTematico3/iGresso#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "ejs": "^3.0.2",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
+    "package.json": "^2.0.1",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "pg": "^8.7.3",

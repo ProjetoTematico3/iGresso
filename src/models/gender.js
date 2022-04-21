@@ -31,7 +31,12 @@ module.exports = (sequelize, DataTypes) => {
         nome: {
             type: Sequelize.STRING,
             allowNull: false,
-        }
+        },
+
+        api_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
     }, {
         sequelize,
         modelName: 'Gender',

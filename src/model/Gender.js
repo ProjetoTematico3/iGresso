@@ -13,7 +13,12 @@ const Gender = db.define('Gender', {
     nome: {
         type: Sequelize.STRING,
         allowNull: false,
-    }
+    },
+    
+    api_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
 });
 
 Gender.hasMany(Movie, {

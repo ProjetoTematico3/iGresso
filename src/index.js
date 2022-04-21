@@ -5,6 +5,7 @@ const path = require('path');
 const { hash } = require('bcryptjs');
 const passport = require('passport')
 const session = require('express-session');
+const movieService = require('./utils/movieService');
 
 const db = require('./database');
 //const User = require('./model/User');
@@ -40,7 +41,7 @@ app.use('/src/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 
-//db.sync();
+
 
 // (async() => {
 //     try {
@@ -59,5 +60,5 @@ app.set('views', __dirname + '/view');
 //     }
 // })();
 
-
+movieService.run().catch(err => console.error(err));
 app.listen(2078);

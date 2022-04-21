@@ -15,6 +15,7 @@ const Image = db.define('Image', {
 
     tipo_imagem: {
         type: Sequelize.INTEGER,
+        defaultValue: 0, // 0: normal | 1: fundo | 2: poster
         allowNull: false,
     },
 });

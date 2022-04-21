@@ -29,6 +29,10 @@ const Movie = db.define('Movie', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    api_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
 });
 
 Movie.belongsTo(Team, {

@@ -5,27 +5,7 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Movie extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
-        static associate(models) {
-
-            Movie.belongsTo(models.Team, {
-                constraint: true,
-                foreignKey: "id_filme",
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
-            });
-
-            Movie.hasMany(models.Image, {
-                constraint: true,
-                foreignKey: "id_filme",
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE'
-            });
-        }
+        
     }
     Movie.init({
         id: {
@@ -50,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
         },
 
         duracao: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
+        api_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
         },
