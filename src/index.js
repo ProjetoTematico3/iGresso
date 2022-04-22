@@ -41,8 +41,7 @@ app.use('/src/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 
-
-
+db.sync({ force: true });
 // (async() => {
 //     try {
 //         await db.sync({ force: true });

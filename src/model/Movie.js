@@ -12,11 +12,12 @@ const Movie = db.define('Movie', {
     },
     nome: {
         type: Sequelize.STRING,
+        
         allowNull: false,
     },
 
     descricao: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(65535),
         allowNull: false,
     },
 
@@ -31,7 +32,7 @@ const Movie = db.define('Movie', {
     },
     api_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
 });
 
