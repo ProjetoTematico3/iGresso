@@ -171,3 +171,7 @@ body {
 .admin-btn:hover {
     filter: drop-shadow(2px 4px 6px black);
 }
+#user-not-found{
+    display: block;
+    margin: 1rem 0;
+}
