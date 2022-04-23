@@ -6,8 +6,10 @@ const api = axios.create({
   params: {
     api_key: apiKey,
     include_adult: false,
-    language:"pt-BR"
- }
+    language: "pt-BR",
+    append_to_response: "release_dates"
+ 
+  }
 });
 
 module.exports = api;

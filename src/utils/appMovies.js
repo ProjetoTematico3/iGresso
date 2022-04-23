@@ -42,22 +42,22 @@ module.exports = {
       }
     }
     else {
-      var CURRENT_PAGE = 1, END_PAGE = 1;
-      // while (CURRENT_PAGE <= END_PAGE) {
-      try {
-        const result = await api.get('/discover/movie', {
-          params: {
-            primary_release_year: new Date().getFullYear(),
-            page: CURRENT_PAGE
-          }
-        });
-        END_PAGE = result.data.total_pages ?? 1;
-        CURRENT_PAGE++
-        await handleMovies(result.data.results);
-      } catch (error) {
-        console.log(error);
+      var CURRENT_PAGE = 1, END_PAGE = 3;
+      while (CURRENT_PAGE <= END_PAGE) {
+        try {
+          const result = await api.get('/discover/movie', {
+            params: {
+              primary_release_year: new Date().getFullYear(),
+              page: CURRENT_PAGE
+            }
+          });
+          // END_PAGE = result.data.total_pages ?? 1;
+          CURRENT_PAGE++
+          await handleMovies(result.data.results);
+        } catch (error) {
+          console.log(error);
+        }
       }
-      // }
     }
 
 
@@ -81,11 +81,25 @@ const createMovie = async (element, download_images = false) => {
   });
 
   if (checkMovie.length == 0) {
+    var classificacao ="--";
+
+    const result = await api.get(`/movie/${element.id}`);
+    try {
+      const release_dates = result.data.release_dates.results.find(s => s.iso_3166_1 == "BR").release_dates;
+      if(release_dates != undefined && release_dates != null && release_dates.length > 0){
+        classificacao = release_dates[0].certification;
+      }
+    } catch (error) {
+      
+    }
+   
+
     await Movie.create({
       nome: element.title,
       descricao: element.overview,
       dt_lancamento: element.release_date,
       duracao: 99999,
+      classificacao: classificacao,
       api_id: element.id
     }).then(async (movie) => {
 
@@ -113,7 +127,7 @@ const downloadImageMovie = async (id, sub_path, image_type) => {
   await response.data.pipe(writer);
 
   Image.create({
-    diretorio: full_path,
+    diretorio: sub_path,
     tipo_imagem: image_type,
     id_filme: id
   });

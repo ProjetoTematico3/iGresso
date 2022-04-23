@@ -30,6 +30,11 @@ const Movie = db.define('Movie', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+
+    classificacao: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
     api_id: {
         type: Sequelize.INTEGER,
         allowNull: true,

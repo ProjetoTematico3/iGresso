@@ -1,0 +1,42 @@
+<%- include('../layout/header') %>
+    <% const backdrop_image=movie.Images.find(s=> s.tipo_imagem == 1).diretorio;
+        const backdrop_image_src = `/src/public/images/${movie.id}${backdrop_image}`;
+        %>
+
+        <div class="movie-container">
+
+            <div class="movie-header-info">
+                <div class="movie-backdrop" style="background: url('<%=backdrop_image_src%>');">
+
+                    <div class="movie-content-info">
+                        <span class="movie-title">
+                            <%= movie.nome %>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+
+                <div class="row">
+
+                    <div class="col-md-8">
+                        CU
+                    </div>
+
+                    <div class="col-md-4">
+                        HORARIOS
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <%- include('../layout/footer') %>

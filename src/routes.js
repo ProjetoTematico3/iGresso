@@ -10,6 +10,7 @@ const authenticationMiddleware = (req, res, next)=>{
 const HomeController = require('./controller/homeController');
 const LoginController = require('./controller/loginController');
 const AdminController = require('./controller/adminController');
+const MovieController = require('./controller/movieController');
 
 routes.get('/', HomeController.index);
 routes.get('/Login', LoginController.login);
@@ -21,5 +22,7 @@ routes.get('/Logout', LoginController.logout);
 
 routes.get('/Admin', AdminController.index);
 routes.get('/Admin/SyncImages', AdminController.syncImages);
+
+routes.get('/Movie/:id', MovieController.movie);
 
 module.exports = routes;     

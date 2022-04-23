@@ -175,3 +175,30 @@ body {
     display: block;
     margin: 1rem 0;
 }
+
+.movie-container{
+}
+
+.movie-header-info{
+    display: flex;
+}
+
+.movie-backdrop{
+    height: 21rem !important;;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    width: 53rem;
+}
+
+.movie-content-info{
+    margin-top: 12rem;
+    padding: 0 2rem;
+    height: 9rem;
+    background: rgba(0, 0, 0, 0.40);
+}
+
+.movie-title{
+    font-size: 3rem;
+    font-weight: 600;
+    color: white;
+}
