@@ -9,6 +9,7 @@ const authenticationMiddleware = (req, res, next)=>{
 
 const HomeController = require('./controller/homeController');
 const LoginController = require('./controller/loginController');
+const AdminController = require('./controller/adminController');
 
 routes.get('/', HomeController.index);
 routes.get('/Login', LoginController.login);
@@ -17,5 +18,8 @@ routes.post('/Login', passport.authenticate('local', {
     failureRedirect: '/Login?fail=true'
 }));
 routes.get('/Logout', LoginController.logout);
+
+routes.get('/Admin', AdminController.index);
+routes.get('/Admin/SyncImages', AdminController.syncImages);
 
 module.exports = routes;     

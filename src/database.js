@@ -1,4 +1,4 @@
 const Sequelize = require('sequelize');
-const connectionString = "postgres://lbaryjhp:UiJ_K3Hnw27QsK2dZBmgcNXRywlTcRJW@tuffi.db.elephantsql.com/lbaryjhp";
+const connectionString = "postgres://echaqdog:0AFZbiV89Im7u19bjJKIa3FeKx-hcaku@kesavan.db.elephantsql.com/echaqdog";
 const sequelize = new Sequelize(connectionString, { dialect: 'postgres' });
 module.exports = sequelize;

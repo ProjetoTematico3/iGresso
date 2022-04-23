@@ -11,8 +11,10 @@
 
     <script src="/src/public/content/jquery/jquery-3.6.0.min.js"></script>
     <script src="/src/public/content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/src/public/content/toastify/toastify-js.js"></script>
     <script src="/src/public/content/app/app.js"></script>
     <link rel="stylesheet" href="/src/public/content/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/src/public/content/toastify/toastify.min.css">
     <link rel="stylesheet" href="/src/public/content/app/app.css">
 
 </head>
@@ -45,11 +47,15 @@
                         <a class="nav-link" href="#">Meus ingressos</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Administração</a>
-                    </li>
+
 
                     <% if (!!locals.user) {%>
+                        <% if (user.tipo_usuario == 0) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin">Administração</a>
+                            </li>
+                        <% } %>
+                       
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-user"></i>
                                 <%= user.nome %>
@@ -58,11 +64,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/Logout">Sair</a>
                         </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Login">Entrar</a>
-                        </li>
-                    <% } %>
+                        <% } else { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Login">Entrar</a>
+                            </li>
+                            <% } %>
 
                 </ul>
             </div>

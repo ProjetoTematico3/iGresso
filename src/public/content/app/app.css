@@ -1,91 +1,103 @@
-:root{
-    --purple: rgba(171,71,188,1);
-    --grey:rgba(94,94,94,1);
-    --dark-blue:rgba(2,90,191,1);
-    --dark-grey-1:rgba(58,56,69,1);
-    --dark-grey-2:rgba(51,50,56,1);
-    --dark-grey-3:rgba(56,56,56,1);
-    --gradient-90deg: linear-gradient(90deg, rgba(13,243,255,1) 0%, rgba(41,177,255,1) 14.9%, rgba(28,104,255,1) 32.2%, rgba(123,77,240,1) 46.7%, rgba(190,51,255,1) 64.3%, rgba(202,24,222,1) 85.1%, rgba(252,5,231,1) 100%);
-    
+:root {
+    --purple: rgba(171, 71, 188, 1);
+    --grey: rgba(94, 94, 94, 1);
+    --dark-blue: rgba(2, 90, 191, 1);
+    --dark-grey-1: rgba(58, 56, 69, 1);
+    --dark-grey-2: rgba(51, 50, 56, 1);
+    --dark-grey-3: rgba(56, 56, 56, 1);
+    --gradient-90deg: linear-gradient(90deg, rgba(13, 243, 255, 1) 0%, rgba(41, 177, 255, 1) 14.9%, rgba(28, 104, 255, 1) 32.2%, rgba(123, 77, 240, 1) 46.7%, rgba(190, 51, 255, 1) 64.3%, rgba(202, 24, 222, 1) 85.1%, rgba(252, 5, 231, 1) 100%);
+
 }
 
-a{
+a {
     color: white !important;
 }
 
-body{
+body {
     background: var(--dark-grey-1);
 }
 
-.container-login{
+.container-login {
     display: flex;
     height: 100vh;
 }
 
-.container-login .container-form{
+.container-login .container-form {
     margin: auto;
 }
 
-.container-sign{
+.container-sign {
     text-align: center;
     margin-top: 3rem;
 }
 
-.form-horizontal{
+.form-horizontal {
     min-width: 24rem;
 }
 
-.i-input{
+.i-input {
     height: 3.2rem !important;
     background: transparent;
     margin: 1.5rem 0 !important;
 }
 
-.i-input:focus{
+.i-input:focus {
     background: transparent;
 }
 
-.i-input-purple{
+.i-input-purple {
     color: var(--purple) !important;
     border: 1px solid var(--purple);
     outline-color: 1px solid var(--purple) !important;
 }
-.i-input-purple::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+
+.i-input-purple::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
     color: var(--purple);
 }
-.i-input-purple:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: var(--purple);
-   opacity: 1;
-}
-.i-input-purple::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: var(--purple);
-   opacity: 1;
-}
-.i-input-purple:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: var(--purple);
-}
-.i-input-purple::-ms-input-placeholder { /* Microsoft Edge */
-   color: var(--purple);
-}
-.i-input-purple::placeholder { /* padrao*/
-   color: var(--purple);
+
+.i-input-purple:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: var(--purple);
+    opacity: 1;
 }
 
-.i-text-purple{
+.i-input-purple::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: var(--purple);
+    opacity: 1;
+}
+
+.i-input-purple:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--purple);
+}
+
+.i-input-purple::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--purple);
+}
+
+.i-input-purple::placeholder {
+    /* padrao*/
+    color: var(--purple);
+}
+
+.i-text-purple {
     color: var(--purple) !important;
 }
 
-.logo-login{
+.logo-login {
     margin-top: 1rem;
     margin-bottom: 6rem !important;
     display: flex;
 }
 
-.logo-login .igresso-logo{
+.logo-login .igresso-logo {
     margin: auto;
 }
 
-.igresso-logo{
+.igresso-logo {
     background-image: url(../assets/ticket.svg);
     display: block;
     background-size: 78px;
@@ -98,7 +110,7 @@ body{
     margin-right: 5%;
 }
 
-.igresso-logo::before{
+.igresso-logo::before {
     content: "iGresso";
     color: var(--purple);
     display: block;
@@ -108,36 +120,54 @@ body{
     margin-bottom: 2rem;
 }
 
-.navbar-brand{
+.navbar-brand {
     width: 20rem;
     margin-top: 1.5rem;
 }
 
 
-.navbar{
-    padding-bottom:8px;
+.navbar {
+    padding-bottom: 8px;
     background:
-      var(--gradient-90deg)
-      left 
-      bottom 
-      no-repeat; 
-    background-size:100% 8px ;
-    border-image: 3px solid  !important;
+        var(--gradient-90deg) left bottom no-repeat;
+    background-size: 100% 8px;
+    border-image: 3px solid !important;
     padding: 0px 2rem !important;
 }
 
-.navbar-darkgrey{
+.navbar-darkgrey {
     background-color: var(--dark-grey-2) !important;
 }
 
-.nav-link.active{
+.nav-link.active {
     color: var(--purple) !important;
 }
 
-.nav-item{
+.nav-item {
     margin: 0 1rem !important;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     color: var(--purple) !important;
+}
+
+#app-page {
+    margin: 1rem 0;
+}
+
+.admin-btn {
+    background: var(--purple);
+    color: white;
+    padding: 1rem;
+    margin: 1.1rem 0.5rem;
+    font-size: 20pt;
+    border-radius: 6px;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.admin-btn:hover {
+    filter: drop-shadow(2px 4px 6px black);
 }

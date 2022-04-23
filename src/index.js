@@ -5,10 +5,10 @@ const path = require('path');
 const { hash } = require('bcryptjs');
 const passport = require('passport')
 const session = require('express-session');
-const movieService = require('./utils/movieService');
+const appMovies = require('./utils/appMovies');
 
 const db = require('./database');
-//const User = require('./model/User');
+// const User = require('./model/User');
 const sequelize = require('./database');
 //const Item = require('./model/Item');
 //const Order = require('./model/Order');
@@ -41,7 +41,7 @@ app.use('/src/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 
-db.sync({ force: true });
+
 // (async() => {
 //     try {
 //         await db.sync({ force: true });
@@ -59,5 +59,5 @@ db.sync({ force: true });
 //     }
 // })();
 
-movieService.run().catch(err => console.error(err));
+appMovies.startService().catch(err => console.error(err));
 app.listen(2078);
