@@ -57,5 +57,5 @@ app.set('views', __dirname + '/view');
 //         console.log(error);
 //     }
 // })();
-appMovies.startService().catch(err => console.error(err));
+//appMovies.startService().catch(err => console.error(err));
 app.listen(2078);
