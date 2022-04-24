@@ -23,9 +23,7 @@ Esse projeto foi feito com as seguinte tecnologias:
 
 1. Abrir terminal do vscode
 
-- npm install express   
-- npm install ejs
-- npm install bcryptjs 
+- npm install   
 
 2. Para executar a aplicação
 

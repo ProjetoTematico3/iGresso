@@ -8,17 +8,12 @@ module.exports = {
     },
 
     async syncImages(request, response) {
-     
-            const sync = await appMovies.syncImages();
-            return response.json({ text: "Sincronização Completa", status: true});
-   
-       
-        
+
+        const sync = await appMovies.syncImages();
+        return response.json({ text: "Sincronização Completa", status: true });
+
+
+
     },
-
-
-
-
-
 
 }

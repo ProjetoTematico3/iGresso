@@ -180,12 +180,12 @@ body {
     display: flex;
 }
 
-.card-movie{
+.card-movie {
     position: relative;
     cursor: pointer;
 }
 
-.card-movie:hover{
+.card-movie:hover {
     filter: brightness(0.5);
 }
 
@@ -194,7 +194,7 @@ body {
     width: 53rem;
 }
 
-.card-movie-info{
+.card-movie-info {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -203,17 +203,15 @@ body {
     margin: 1rem;
 }
 
-.card-movie-title{
-  
+.card-movie-title {
     color: white;
     text-align: center;
 }
 
-.card-movie-stars{
+.card-movie-stars {
     margin-top: 0.5rem;
     text-align: center;
 }
-
 
 .movie-content-info {
     position: absolute;
@@ -248,7 +246,7 @@ body {
     display: flex;
 }
 
-.rating-pull-right{
+.rating-pull-right {
     position: absolute;
     right: 0;
 }
@@ -378,11 +376,18 @@ body {
     color: var(--purple);
 }
 
-
 .card-movie {
     padding: 1rem;
 }
 
 .card-movie img {
     width: 100%;
+}
+
+
+/*  Public */
+
+.btn-primary-purple {
+    background-color: var(--purple);
+    color: white;
 }
