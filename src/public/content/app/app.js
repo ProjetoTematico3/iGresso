@@ -13,6 +13,13 @@ $(()=>{
         });
     });
 
+    $("#app-page").on('click', '.card-movie', (e) =>{
+        const id = $(e.currentTarget).data('id');
+        window.location = `/Movie/${id}`;
+    });
+
+    
+
     
     
 

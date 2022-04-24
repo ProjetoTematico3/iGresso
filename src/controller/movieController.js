@@ -4,7 +4,10 @@ module.exports = {
 
 
     async index(request, response) {
-       
+        const movie_list = await Movie.findAll({
+            include: Image
+        });
+        return response.render('movie/index', { title: "Filmes", movie_list: movie_list });
     },
 
     async movie(request, response) {

@@ -1,0 +1,34 @@
+<% 
+
+ getRatingClass = (rating) =>{
+    var rating_class = "pg-none";
+
+    if(rating){
+        switch (rating) {
+            case 'L':
+                rating_class = 'pg-livre';
+                break;
+            case '10':
+                rating_class = 'pg-10';
+                break;
+            case '12':
+                rating_class = 'pg-12';
+            break;
+            case '14':
+                rating_class = 'pg-14';
+            break;
+            case '16':
+                rating_class = 'pg-16';
+            break;
+            case '18':
+                rating_class = 'pg-18';
+            break;
+            default:
+                rating_class = 'pg-empty';
+            break;
+        }
+    }
+    return rating_class;
+}
+
+%> 

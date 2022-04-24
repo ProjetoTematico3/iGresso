@@ -1,0 +1,45 @@
+<%- include('../layout/header') %>
+
+<% if (!!locals.movie_list) { %>
+
+ 
+    <div class="col-md-12 movies-container">
+        <div class="row">
+            <% for (let index = 0; index < movie_list.length; index++) {
+                const movie = movie_list[index];
+    
+                const poster_image= movie.Images.find(s=> s.tipo_imagem == 2).diretorio;
+                const poster_image_src = `/src/public/images/${movie.id}${poster_image}`;
+                var rating = getRatingClass(movie.classificacao);
+            %>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                <div class="card-movie" data-id="<%= movie.id %> ">
+                    <img src="<%=poster_image_src%>" alt="">
+                    <div class="card-movie-info">
+                        <div class="movie-rating pg-sm rating-pull-right <%= rating %> ">
+                            <%= movie.classificacao %>
+                        </div>
+                    </div>
+                    <div class="card-movie-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="card-movie-title">
+                        <%= movie.nome %>
+                    </div>
+                   
+                </div>
+            </div>
+            <% } %>
+    
+        </div>
+    </div>
+   
+
+
+<% } %>
+
+<%- include('../layout/footer') %>

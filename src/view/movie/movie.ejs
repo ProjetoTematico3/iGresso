@@ -1,36 +1,8 @@
 <%- include('../layout/header') %>
     <% const backdrop_image=movie.Images.find(s=> s.tipo_imagem == 1).diretorio;
         const backdrop_image_src = `/src/public/images/${movie.id}${backdrop_image}`;
-        var rating = "pg-none";
-
-        if(movie.classificacao){
-        switch ( movie.classificacao.trim()) {
-        case 'L':
-        rating = 'pg-livre';
-        break;
-        case '10':
-        rating = 'pg-10';
-        break;
-        case '12':
-        rating = 'pg-12';
-        break;
-        case '14':
-        rating = 'pg-14';
-        break;
-        case '16':
-        rating = 'pg-16';
-        break;
-        case '18':
-        rating = 'pg-18';
-        break;
-        default:
-        rating = 'pg-empty';
-        break;
-        }
-        }
-
-
-        %>
+        var rating = getRatingClass(movie.classificacao);
+    %>
 
         <div class="movie-container">
 

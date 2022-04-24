@@ -180,10 +180,40 @@ body {
     display: flex;
 }
 
+.card-movie{
+    position: relative;
+    cursor: pointer;
+}
+
+.card-movie:hover{
+    filter: brightness(0.5);
+}
+
 .movie-backdrop {
     position: relative;
     width: 53rem;
 }
+
+.card-movie-info{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 1rem;
+}
+
+.card-movie-title{
+  
+    color: white;
+    text-align: center;
+}
+
+.card-movie-stars{
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
 
 .movie-content-info {
     position: absolute;
@@ -218,11 +248,23 @@ body {
     display: flex;
 }
 
+.rating-pull-right{
+    position: absolute;
+    right: 0;
+}
+
 .pg {
     font-size: 19pt;
     padding: 0.4rem;
     width: 3rem;
     height: 3rem;
+    text-align: center;
+}
+
+.pg-sm {
+    font-size: 13pt;
+    width: 2rem;
+    height: 2rem;
     text-align: center;
 }
 
@@ -334,4 +376,13 @@ body {
 
 .icon-active {
     color: var(--purple);
+}
+
+
+.card-movie {
+    padding: 1rem;
+}
+
+.card-movie img {
+    width: 100%;
 }

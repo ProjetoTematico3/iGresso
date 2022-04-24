@@ -24,6 +24,7 @@ routes.get('/Admin', AdminController.index);
 routes.get('/Admin/SyncImages', AdminController.syncImages);
 routes.get('/SignUp', LoginController.signup);
 
+routes.get('/Movies', MovieController.index);
 routes.get('/Movie/:id', MovieController.movie);
 
 module.exports = routes;     
