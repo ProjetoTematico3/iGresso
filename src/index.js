@@ -8,7 +8,7 @@ const session = require('express-session');
 const appMovies = require('./utils/appMovies');
 
 const db = require('./database');
-// const User = require('./model/User');
+const User = require('./model/User');
 const sequelize = require('./database');
 //const Item = require('./model/Item');
 //const Order = require('./model/Order');
@@ -57,6 +57,5 @@ app.set('views', __dirname + '/view');
 //         console.log(error);
 //     }
 // })();
-
 appMovies.startService().catch(err => console.error(err));
 app.listen(2078);

@@ -1,27 +1,68 @@
 <%- include('../layout/header') %>
     <% const backdrop_image=movie.Images.find(s=> s.tipo_imagem == 1).diretorio;
         const backdrop_image_src = `/src/public/images/${movie.id}${backdrop_image}`;
+        var rating = "pg-none";
+
+        if(movie.classificacao){
+        switch ( movie.classificacao.trim()) {
+        case 'L':
+        rating = 'pg-livre';
+        break;
+        case '10':
+        rating = 'pg-10';
+        break;
+        case '12':
+        rating = 'pg-12';
+        break;
+        case '14':
+        rating = 'pg-14';
+        break;
+        case '16':
+        rating = 'pg-16';
+        break;
+        case '18':
+        rating = 'pg-18';
+        break;
+        default:
+        rating = 'pg-empty';
+        break;
+        }
+        }
+
+
         %>
 
         <div class="movie-container">
 
-            <div class="movie-header-info">
-                <div class="movie-backdrop" style="background: url('<%=backdrop_image_src%>');">
-
-                    <div class="movie-content-info">
-                        <span class="movie-title">
-                            <%= movie.nome %>
-                        </span>
-                    </div>
-
-                </div>
-            </div>
             <div class="col-md-12">
 
                 <div class="row">
 
                     <div class="col-md-8">
-                        CU
+
+                        <div class="movie-header-info">
+                            <div class="movie-backdrop">
+                                <img class="movie-backdrop-image" src="<%=backdrop_image_src%>">
+                                <div class="movie-content-info">
+                                    <div class="movie-info">
+                                        <div class="movie-title">
+                                            <%= movie.nome %>
+                                        </div>
+                                        <div class="movie-infos">
+                                            <div class="movie-rating pg <%= rating %> ">
+                                                <%= movie.classificacao %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="movie-info-block">
+                            <h3 class="sinopse">Sinopse</h3>
+                            <p><%= movie.descricao %> </p>
+                        </div>
                     </div>
 
                     <div class="col-md-4">
