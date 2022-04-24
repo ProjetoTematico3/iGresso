@@ -48,6 +48,12 @@ module.exports = {
 
         return response.redirect('/');
     },
+    
+    async signup(request, response) {
+
+        const {fail} = request.query;
+        return response.render('login/signup', { title: "Registre-se", fail: fail });
+    },
 
    
 
