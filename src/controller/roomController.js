@@ -15,11 +15,10 @@ module.exports = {
     },
 
     async insertRoom(request, response) {
-        const params = request.body
-        console.log(params);
 
         await Room.create({
-            identificacao: request.body.identification
+            identificacao: request.body.identification,
+            id_cinema: request.body.selectMovieTheater
         });
 
         return response.redirect("/");
