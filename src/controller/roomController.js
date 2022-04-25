@@ -21,7 +21,7 @@ module.exports = {
             id_cinema: request.body.selectMovieTheater
         });
 
-        return response.redirect("/");
+        return response.json({ text: "Sala criada com sucesso", status: true });
 
     }
 

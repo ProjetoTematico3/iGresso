@@ -1,24 +1,19 @@
 <%- include('../layout/header') %>
 
-
     <div class="container">
-
-        <div class="col-md-12">
+        <div class="col-md-12 p-5">
             <div class="row">
-
-
-
-                <h5 class="display-5">Cadastro de Salas de cinema</h5>
+                <h5 class="display-5 text-light text-center">Cadastro de Salas de cinema</h5>
 
                 <form method="POST" action="/InsertRoom">
 
-                    <div class="mb-3 mt-2">
-                        <label for="identification" class="form-label">Identificação da sala</label>
+                    <div class="mb-3 mt-4">
+                        <label for="identification" class="form-label text-light">Identificação da sala</label>
                         <input type="text" class="form-control" id="identification" placeholder="Identificação" name="identification">
                     </div>
 
-                    <div class="mb-3 mt-2">
-                        <label for="selectMovieTheater" class="form-label">Selecione o cinema da sala</label>
+                    <div class="mb-3 mt-4">
+                        <label for="selectMovieTheater" class="form-label text-light">Selecione o cinema da sala</label>
                         <select id="selectMovieTheater" name="selectMovieTheater" class="form-select">
                             <% for (let index=0; index < movieTheater_list.length; index++) { 
                                 const movieTheater= movieTheater_list[index];
@@ -34,7 +29,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary-purple">Confirmar</button>
+                    <button type="submit" id="btn-insert-room" class="btn btn-primary-purple mt-1">Confirmar</button>
                 </form>
 
 
