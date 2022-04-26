@@ -1,6 +1,7 @@
 
 const UserModel = require('../model/User');
 const bcrypt = require ('bcryptjs');
+const Register = require('../model/Register');
 
 
 module.exports = {
@@ -54,6 +55,20 @@ module.exports = {
         const {fail} = request.query;
         return response.render('login/signup', { title: "Registre-se", fail: fail });
     },
+
+    async register(request, response) {
+        const params = request.body
+        console.log(params);
+
+        await Register.create({
+            email: request.body.e-mail,
+            nome: request.body.name,
+            senha: request.body.password
+        });
+
+        return response.redirect("/");
+
+    }
 
    
 
