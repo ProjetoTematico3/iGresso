@@ -1,24 +1,27 @@
 <%- include('../layout/header') %>
 
     <div class="container">
-        <div class="col-md-12 p-5">
-            <div class="row">
+        <div class="row">
+            <div class="col-md-12 p-5">
                 <h5 class="display-5 text-light text-center">Cadastro de Salas de cinema</h5>
 
                 <form method="POST" action="/InsertRoom">
 
-                    <div class="mb-3 mt-4">
+                    <div class="mb-3 mt-5">
                         <label for="identification" class="form-label text-light">Identificação da sala</label>
-                        <input type="text" class="form-control" id="identification" placeholder="Identificação" name="identification">
+                        <input required type="text" class="form-control" id="identification" placeholder="Sala 1" name="identification">
+                    </div>
+
+                    <div class="mb-3 mt-4">
+                        <label for="capacity" class="form-label text-light">Capacidade da sala</label>
+                        <input required type="number" class="form-control" id="capacity" placeholder="100" name="capacity">
                     </div>
 
                     <div class="mb-3 mt-4">
                         <label for="selectMovieTheater" class="form-label text-light">Selecione o cinema da sala</label>
-                        <select id="selectMovieTheater" name="selectMovieTheater" class="form-select">
-                            <% for (let index=0; index < movieTheater_list.length; index++) { 
-                                const movieTheater= movieTheater_list[index];
-                                
-                                %>
+                        <select required id="selectMovieTheater" name="selectMovieTheater" class="form-select">
+                            <% for (let index=0; index < movieTheater_list.length; index++) { const
+                                movieTheater=movieTheater_list[index]; %>
 
                                 <option value="<%=movieTheater.id%>">
                                     <%=movieTheater.nome%>
@@ -36,7 +39,6 @@
             </div>
         </div>
     </div>
-
 
 
 

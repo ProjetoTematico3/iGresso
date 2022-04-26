@@ -17,10 +17,13 @@ $(() => {
         window.location = `/Movie/${id}`;
     });
 
-
-
-
-
+    $("#app-page").on('click', '#btn-insert-room', () => {
+        $.getJSON("/Room/insertRoom", (data) => {
+            console.log(data);
+            console.log(data.text);
+            Alert(data.text, data.status)
+        });
+    });
 
 })
 

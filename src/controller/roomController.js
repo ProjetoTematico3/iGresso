@@ -15,11 +15,19 @@ module.exports = {
     },
 
     async insertRoom(request, response) {
+        identification = request.body.identification;
+        capacity = request.body.capacity;
+        id_movieTheater = request.body.selectMovieTheater;
 
-        await Room.create({
-            identificacao: request.body.identification,
-            id_cinema: request.body.selectMovieTheater
-        });
+        try {
+            await Room.create({
+                identificacao: identification,
+                capacidade: capacity,
+                id_cinema: id_movieTheater
+            });
+        } catch (e) {
+            return response.json({ text: e.message, status: false });
+        }
 
         return response.json({ text: "Sala criada com sucesso", status: true });
 

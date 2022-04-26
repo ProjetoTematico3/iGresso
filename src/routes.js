@@ -31,6 +31,7 @@ routes.get('/Room', RoomController.index);
 routes.post('/InsertRoom', RoomController.insertRoom);
 
 routes.get('/Schedule', scheduleController.index);
+routes.post('/InsertSchedule', scheduleController.insertSchedule);
 
 routes.get('/SignUp', LoginController.signup);
 

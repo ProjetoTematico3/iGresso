@@ -12,7 +12,7 @@ const Movie = db.define('Movie', {
     },
     nome: {
         type: Sequelize.STRING,
-        
+
         allowNull: false,
     },
 
@@ -41,9 +41,14 @@ const Movie = db.define('Movie', {
     },
 });
 
-Movie.belongsTo(Team, {
+/*Movie.belongsTo(Team, {
     constraint: true,
     foreignKey: "id_filme"
+});*/
+
+Movie.belongsTo(Team, {
+    constraint: true,
+    foreignKey: "id_time"
 });
 
 Movie.hasMany(Image, {

@@ -15,6 +15,11 @@ const Room = db.define('Room', {
         type: Sequelize.STRING,
         allowNull: false,
     },
+
+    capacidade: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
 });
 
 Room.hasMany(Schedule, {

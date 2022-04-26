@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const Movie = require('./Movie');
 
 const Schedule = db.define('Schedule', {
     id: {
@@ -9,13 +10,13 @@ const Schedule = db.define('Schedule', {
         primaryKey: true
     },
 
-    dia: {
-        type: Sequelize.DATE,
+    data: {
+        type: Sequelize.DATEONLY,
         allowNull: false,
     },
 
     horario: {
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
         allowNull: false,
     },
 
@@ -24,5 +25,11 @@ const Schedule = db.define('Schedule', {
         allowNull: false,
     }
 });
+
+Schedule.belongsTo(Movie, {
+    constraint: true,
+    foreignKey: "id_filme"
+});
+
 
 module.exports = Schedule;

@@ -5,19 +5,56 @@
             <div class="col-md-12 p-5">
                 <h5 class="display-5 text-light text-center">Cadastro de Salas de cinema</h5>
 
-                <form method="POST" action="/">
+                <form method="POST" action="/InsertSchedule">
+
+                    <div class="mb-3 mt-5">
+                        <label for="selectRoom" class="form-label text-light">Selecione a sala</label>
+                        <select required id="selectRoom" name="selectRoom" class="form-select">
+                            <% for (let index=0; index < room_list.length; index++) { const room=room_list[index]; %>
+
+                                <option value="<%=room.id%>">
+                                    <%=room.identificacao%>
+                                </option>
+
+                                <%} %>
+
+                        </select>
+                    </div>
 
                     <div class="mb-3 mt-4">
-                        <label for="" class="form-label text-light">Dia </label>
+                        <label for="selectMovie" class="form-label text-light">Selecione o filme da sala</label>
+                        <select required id="selectMovie" name="selectMovie" class="form-select">
+                            <% for (let index=0; index < movie_list.length; index++) { const movie=movie_list[index]; %>
+
+                                <option value="<%=movie.id%>">
+                                    <%=movie.nome%>
+                                </option>
+
+                                <%} %>
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3 mt-4">
+                        <label for="selectLanguage" class="form-label text-light">Selecione o filme da sala</label>
+                        <select required id="selectLanguage" name="selectLanguage" class="form-select">
+                            <option value="Ingles">Inglês</option>
+                           <option value="Portugues">Português</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 mt-4">
+                        <label for="date" class="form-label text-light">Data</label>
                         <input required type="date" class="form-control" id="date" name="date">
                     </div>
 
                     <div class="mb-3 mt-4">
-                        <label for="" class="form-label text-light">Horário</label>
+                        <label for="time" class="form-label text-light">Horário</label>
                         <input required type="time" class="form-control" id="time" name="time">
                     </div>
 
                     <button type="submit" class="btn btn-primary-purple mt-1">Confirmar</button>
+
                 </form>
 
 
