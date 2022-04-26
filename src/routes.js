@@ -25,6 +25,7 @@ routes.get('/Logout', LoginController.logout);
 
 routes.get('/Admin', AdminController.index);
 routes.get('/Admin/SyncImages', AdminController.syncImages);
+routes.post('/Register', LoginController.register);
 
 routes.get('/Room', RoomController.index);
 routes.post('/InsertRoom', RoomController.insertRoom);
