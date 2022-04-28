@@ -18,10 +18,13 @@ $(() => {
     });
 
     $("#app-page").on('click', '#btn-insert-room', () => {
-        $.getJSON("/Room/insertRoom", (data) => {
-            console.log(data);
-            console.log(data.text);
-            Alert(data.text, data.status)
+        $.getJSON("/Room/Create", () => {
+            let param = $.param({ data }, true);
+            let result = decodeURIComponent(param);
+            console.log(result);
+            //console.log(data);
+            //console.log(data.text);
+            //Alert(data.text, data.status)
         });
     });
 

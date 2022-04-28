@@ -12,7 +12,6 @@ const LoginController = require('./controller/loginController');
 const AdminController = require('./controller/adminController');
 const MovieController = require('./controller/movieController');
 const RoomController = require('./controller/roomController');
-const Schedule = require('./model/Schedule');
 const scheduleController = require('./controller/scheduleController');
 
 routes.get('/', HomeController.index);
@@ -28,10 +27,10 @@ routes.get('/Admin/SyncImages', AdminController.syncImages);
 routes.post('/Register', LoginController.register);
 
 routes.get('/Room', RoomController.index);
-routes.post('/InsertRoom', RoomController.insertRoom);
+routes.post('/Room/Create', RoomController.create);
 
 routes.get('/Schedule', scheduleController.index);
-routes.post('/InsertSchedule', scheduleController.insertSchedule);
+routes.post('/Schedule/Create', scheduleController.create);
 
 routes.get('/SignUp', LoginController.signup);
 

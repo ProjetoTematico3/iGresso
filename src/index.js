@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
+
 app.use('/src/public', express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');

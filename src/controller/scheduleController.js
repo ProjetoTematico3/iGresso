@@ -1,4 +1,3 @@
-const MovieTheater = require('../model/MovieTheater');
 const Movies = require('../model/Movie')
 const Room = require('../model/Room');
 const Schedule = require('../model/Schedule');
@@ -13,20 +12,22 @@ module.exports = {
         return response.render("schedule/index", { title: "Cadastro de horários", room_list: room_list, movie_list: movie_list });
     },
 
-    async insertSchedule(request, response) {
-        roomId = request.body.selectRoom;
-        movieId = request.body.selectMovie;
-        language = request.body.selectLanguage;
-        date = request.body.date;
-        time = request.body.time;
+    async create(request, response) {
+        let roomId = request.body.selectRoom;
+        let movieId = request.body.selectMovie;
+        let language = request.body.selectLanguage;
+        let date = request.body.date;
+        let time = request.body.time;
+
+        time = date + 'T' + time + ':00-03:00';
 
         try {
             await Schedule.create({
-                id_sala: roomId,
-                id_filme: movieId,
-                idioma: language,
                 data: date,
-                horario: time,
+                horario: result,
+                idioma: language,
+                id_filme: movieId,
+                id_sala: roomId,
             });
         } catch (e) {
 

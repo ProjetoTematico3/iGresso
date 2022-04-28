@@ -1,3 +1,4 @@
+const { redirect } = require('express/lib/response');
 const Adress = require('../model/Adress');
 const MovieTheater = require('../model/MovieTheater')
 const Room = require('../model/Room');
@@ -14,7 +15,7 @@ module.exports = {
         return response.render('room/index', { title: "Cadastro de Salas", movieTheater_list: movieTheater_list });
     },
 
-    async insertRoom(request, response) {
+    async create(request, response) {
         identification = request.body.identification;
         capacity = request.body.capacity;
         id_movieTheater = request.body.selectMovieTheater;
@@ -29,6 +30,8 @@ module.exports = {
             return response.json({ text: e.message, status: false });
         }
 
+        // let res = encodeURIComponent("Sala criada com sucesso");
+        // return response.redirect('/Room/?data=' + res);
         return response.json({ text: "Sala criada com sucesso", status: true });
 
     }
