@@ -38,4 +38,8 @@ routes.get('/SignUp', LoginController.signup);
 routes.get('/Movies', MovieController.index);
 routes.get('/Movie/:id', MovieController.movie);
 
+routes.post('/movieList', MovieController.list);
+
+
+
 module.exports = routes;

@@ -16,7 +16,6 @@ module.exports = {
     async logout(request, response) {
 
         request.logout();
-        response.redirect('/');
         return response.redirect('/');
     },
     

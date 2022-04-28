@@ -395,3 +395,14 @@ body {
 .color-purple {
     color: var(--purple);
 }
+
+.i-input-search-movie{
+    height: 4rem;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--purple);
+    color: var(--purple);
+    margin: 1rem 0 2rem;
+    font-size: 1.5rem;
+}

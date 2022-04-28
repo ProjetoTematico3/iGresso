@@ -25,8 +25,16 @@ $(() => {
         });
     });
 
+    $("#app-page").on('keyup', '#search_movie_test', () => {
+        return loadMovies();
+    });
+
 })
 
+const loadMovies = () => {
+    const search = $('#search_movie_test').val();
+    $('#movie_list').load('/movieList', {search: search});
+}
 
 const Alert = (text, status = false) => {
     const background = {
