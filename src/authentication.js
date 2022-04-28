@@ -31,7 +31,7 @@ module.exports = (passport) => {
     }, async(email, senha, done) => {
         try {
             console.log("essrr");
-            const user = await UserModel.findOne({ where: { email: email } });
+            const user = await UserModel.findOne({ where: { email: email.toLowerCase() } });
             if (!user) return done(null, false);
 
             const isValid = bcrypt.compareSync(senha, user.senha);
