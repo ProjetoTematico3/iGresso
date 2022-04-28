@@ -41,7 +41,7 @@ module.exports = {
             return response.render('login/signup', { title: "Registre-se", fail: true, error_message: "E-mail já registrado!" });
         
         await UserModel.create({
-            email: params.email,
+            email: params.email.toLowerCase(),
             nome: params.name,
             senha: await hash(params.senha, 8),
             tipo_usuario: 3
