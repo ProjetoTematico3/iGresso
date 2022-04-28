@@ -29,22 +29,24 @@
                         <div class="igresso-logo"></div>
                     </div>
                    
-                    <form class="form-horizontal" method="POST" action="/SignUp" >
-                        <input type="text" class="form-control i-input i-input-purple" placeholder="name" id="name" name="nome"
-                            autocomplete="off"> 
-                        <input type="text" class="form-control i-input i-input-purple" placeholder="e-mail" id="e-mail" name="email"
-                            autocomplete="off"> 
+                    <form class="form-horizontal" method="POST" action="/Register" >
+                        <input type="text" class="form-control i-input i-input-purple" placeholder="name" id="name" name="name"
+                            autocomplete="off" required> 
+                        <input type="email" class="form-control i-input i-input-purple" placeholder="e-mail" id="email" name="email"
+                            autocomplete="off" required> 
                         <input type="password" class="form-control i-input i-input-purple" placeholder="password" id="password" name="senha"
-                            autocomplete="off"> 
-                        <!-- <input type="password" class="form-control i-input i-input-purple" placeholder="repita a senha" id="repsenha" name="repsenha"
-                            autocomplete="off">    -->
+                            autocomplete="off" required> 
+                        <input type="password" class="form-control i-input i-input-purple" placeholder="repita a senha" id="repsenha" name="repsenha"
+                            autocomplete="off" required>  
+
+                        <% if (locals.fail && fail) {%>
+                            <span class="text text-danger text-center" id="user-not-found"><%= error_message %> </span>
+                        <% } %>
+
                         <button type="submit" class="btn btn-primary"
                             style="margin-left: 26%; width: 50%; background-color:rgba(171, 71, 188,1); border-color: rgba(171, 71, 188,1); color:rgb(255, 255, 255)">Confirmar</button>
 
                     </form>
-                   
-                    
-             
 
                 </div>
 

@@ -1,7 +1,6 @@
 
 const UserModel = require('../model/User');
-const bcrypt = require ('bcryptjs');
-const Register = require('../model/Register');
+const { hash } = require('bcryptjs');
 
 
 module.exports = {
@@ -14,59 +13,41 @@ module.exports = {
     },
 
 
-
-
-    // async Auth(request, response) {
-
-    //     const {email, password} = request.body;
-    //     console.log(email, password);
-    
-    //     var user = await UserModel.findOne({ where: { email: email} });
-    //     if(user == null)
-    //         return response.render('login/login', { title: "Login", msg: "Usuário não localizado" });
-
-    //     var compare = await bcrypt.compare(password, user.password)
-
-    //     console.log(compare);
-
-    //     if(!compare)
-    //         return response.render('login/login', { title: "Login", msg: "Usuário não localizado" });
-
-    //     var session = request.session;
-    //     session.user_id = user.id;
-    //     session.user_name = user.name;
-    //     session.user_tipo = user.tipo_usuario;
-
-
-    //     return response.render('Home/index', { title: "Página Inicial" });
-    // },
-
     async logout(request, response) {
 
         request.logout();
         response.redirect('/');
-
-
         return response.redirect('/');
     },
     
     async signup(request, response) {
 
-        const {fail} = request.query;
-        return response.render('login/signup', { title: "Registre-se", fail: fail });
+        return response.render('login/signup', { title: "Registre-se" });
     },
 
     async register(request, response) {
         const params = request.body
-        console.log(params);
-
-        await Register.create({
-            email: request.body.e-mail,
-            nome: request.body.name,
-            senha: request.body.password
+        
+        if(params.senha != params.repsenha)
+            return response.render('login/signup', { title: "Registre-se", fail: true, error_message: "Senhas não coincidem" });
+        
+        const check_user = await UserModel.findAll({
+            where: {
+                email: params.email
+            }
         });
 
-        return response.redirect("/");
+        if(check_user.length > 0) 
+            return response.render('login/signup', { title: "Registre-se", fail: true, error_message: "E-mail já registrado!" });
+        
+        await UserModel.create({
+            email: params.email,
+            nome: params.name,
+            senha: await hash(params.senha, 8),
+            tipo_usuario: 3
+        });
+
+        return response.redirect("/login");
 
     }
 
