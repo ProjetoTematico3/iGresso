@@ -19,7 +19,9 @@ module.exports = {
         let date = request.body.date;
         let time = request.body.time;
 
-        time = date + 'T' + time + ':00-03:00';
+        time = date + ' ' + time + ':00';
+        let result = Date.parse(time);
+
 
         try {
             await Schedule.create({
@@ -34,7 +36,7 @@ module.exports = {
             return response.json({ text: e.message, status: false });
         }
 
-        return response.json({ text: "Sala criada com sucesso", status: true });
+        return response.json({ text: "Agendamento realizado com sucesso", status: true });
 
     }
 
