@@ -3,13 +3,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 p-5">
-                <h5 class="display-5 text-light text-center">Cadastro de Salas de cinema</h5>
+                <h5 class="display-5 text-light text-center">Cadastro de Filmes em cartaz</h5>
 
                 <form method="POST" action="/Schedule/Create">
 
                     <div class="mb-3 mt-5">
-                        <label for="selectRoom" class="form-label text-light">Selecione a sala</label>
-                        <select required id="selectRoom" name="selectRoom" class="form-select">
+                        <label for="roomId" class="form-label text-light">Selecione a sala</label>
+                        <select required id="roomId" name="roomId" class="form-select">
                             <% for (let index=0; index < room_list.length; index++) { const room=room_list[index]; %>
 
                                 <option value="<%=room.id%>">
@@ -22,8 +22,8 @@
                     </div>
 
                     <div class="mb-3 mt-4">
-                        <label for="selectMovie" class="form-label text-light">Selecione o filme da sala</label>
-                        <select required id="selectMovie" name="selectMovie" class="form-select">
+                        <label for="movieId" class="form-label text-light">Selecione o filme da sala</label>
+                        <select required id="movieId" name="movieId" class="form-select">
                             <% for (let index=0; index < movie_list.length; index++) { const movie=movie_list[index]; %>
 
                                 <option value="<%=movie.id%>">
@@ -36,10 +36,10 @@
                     </div>
 
                     <div class="mb-3 mt-4">
-                        <label for="selectLanguage" class="form-label text-light">Selecione o filme da sala</label>
-                        <select required id="selectLanguage" name="selectLanguage" class="form-select">
+                        <label for="language" class="form-label text-light">Selecione o idioma do filme</label>
+                        <select required id="language" name="language" class="form-select">
                             <option value="Ingles">Inglês</option>
-                           <option value="Portugues">Português</option>
+                            <option value="Portugues">Português</option>
                         </select>
                     </div>
 
@@ -51,6 +51,23 @@
                     <div class="mb-3 mt-4">
                         <label for="time" class="form-label text-light">Horário</label>
                         <input required type="time" class="form-control" id="time" name="time">
+                    </div>
+
+                    <div class="mb-3 mt-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="frontCover" id="frontCoverOn" value="true">
+                            <label class="form-check-label text-light" for="frontCoverOn">
+                                Será o poster principal
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="frontCover" id="frontCoverOff" value="false">
+                            <label class="form-check-label text-light" for="frontCoverOff">
+                                Não será poster principal
+                            </label>
+                        </div>
+
                     </div>
 
                     <button type="submit" class="btn btn-primary-purple mt-1">Confirmar</button>

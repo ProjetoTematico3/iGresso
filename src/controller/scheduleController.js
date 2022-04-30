@@ -13,23 +13,23 @@ module.exports = {
     },
 
     async create(request, response) {
-        let roomId = request.body.selectRoom;
-        let movieId = request.body.selectMovie;
-        let language = request.body.selectLanguage;
-        let date = request.body.date;
-        let time = request.body.time;
+
+        const schedule = request.body;
+
+        let time = schedule.time;
+        let date = schedule.date;
 
         time = date + ' ' + time + ':00';
         let result = Date.parse(time);
 
-
         try {
             await Schedule.create({
-                data: date,
+                data: schedule.date,
                 horario: result,
-                idioma: language,
-                id_filme: movieId,
-                id_sala: roomId,
+                idioma: schedule.language,
+                id_filme: schedule.movieId,
+                id_sala: schedule.roomId,
+                tipo_agendamento: schedule.frontCover
             });
         } catch (e) {
 

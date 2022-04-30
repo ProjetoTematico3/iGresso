@@ -23,6 +23,12 @@ const Schedule = db.define('Schedule', {
     idioma: {
         type: Sequelize.STRING,
         allowNull: false,
+    },
+
+    tipo_agendamento: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
     }
 });
 
