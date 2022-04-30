@@ -20,7 +20,8 @@
                         if (schedule.tipo_agendamento == true){
                             titlePost = schedule.Movie.nome;
                             posterImagePrimary = movie.Images.find(s=> s.tipo_imagem == 1).diretorio;
-                            posterImagePrimarySource = `/src/public/images/${movie.id}${posterImagePrimary}`
+                            posterImagePrimarySource = `/src/public/images/${movie.id}${posterImagePrimary}`;
+                            descriptionPostPrimary = schedule.Movie.descricao;
                         } 
                         
                     }   %>
