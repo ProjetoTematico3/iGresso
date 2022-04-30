@@ -1,85 +1,84 @@
+<% include ('../viewUtils') %>
 
-<% include ('../viewUtils') %> 
+    <!DOCTYPE html>
+    <html lang="pt-br">
 
-<!DOCTYPE html>
-<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <%= title %>
+        </title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
+        <script src="/src/public/content/jquery/jquery-3.6.0.min.js"></script>
+        <script src="/src/public/content/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/src/public/content/toastify/toastify-js.js"></script>
+        <script src="/src/public/content/app/app.js"></script>
+        <link rel="stylesheet" href="/src/public/content/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/src/public/content/toastify/toastify.min.css">
+        <link rel="stylesheet" href="/src/public/content/app/app.css">
+        <link rel="stylesheet" href="/src/public/content/fontawesome/css/fontawesome.min.css">
 
-    <script src="/src/public/content/jquery/jquery-3.6.0.min.js"></script>
-    <script src="/src/public/content/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/src/public/content/toastify/toastify-js.js"></script>
-    <script src="/src/public/content/app/app.js"></script>
-    <link rel="stylesheet" href="/src/public/content/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/src/public/content/toastify/toastify.min.css">
-    <link rel="stylesheet" href="/src/public/content/app/app.css">
-    <link rel="stylesheet" href="/src/public/content/fontawesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+        />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    </head>
 
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-darkgrey bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <div class="igresso-logo"></div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-darkgrey bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <div class="igresso-logo"></div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Noticias</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Movies">Filmes</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Meus ingressos</a>
-                    </li>
-
-
-
-                    <% if (!!locals.user) {%>
-                        <% if (user.tipo_usuario == 0) { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin">Administração</a>
-                            </li>
-                        <% } %>
-                       
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-user"></i>
+                            <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Noticias</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Movies">Filmes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Meus ingressos</a>
+                        </li>
+
+
+
+                        <% if (!!locals.user) {%>
+                            <% if (user.tipo_usuario == 0) { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin">Administração</a>
+                                </li>
+                                <% } %>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-user"></i>
                                 <%= user.nome %>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Logout">Sair</a>
-                        </li>
-                        <% } else { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Login">Entrar</a>
-                            </li>
-                            <% } %>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Logout">Sair</a>
+                                    </li>
+                                    <% } else { %>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Login">Entrar</a>
+                                        </li>
+                                        <% } %>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="container">
+        <div class="container">
 
-        <div id="app-page">
+            <div id="app-page">
