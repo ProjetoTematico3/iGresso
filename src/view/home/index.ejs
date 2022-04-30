@@ -28,26 +28,37 @@
                     <h5 class="movies-main-header-custom px-3">Em Cartaz</h5>
 
                     <div class="row px-3">
-                        <%
-                        for (let index = 0; index < movieList.length; index++) {
-                            const movie = movieList[index]
-                            const movieName = movie.nome;
-                            const posterImage = movie.Images.find(s => s.tipo_imagem == 2).diretorio;
-                            const posterImageSource =  `/src/public/images/${movie.id}${posterImage}`
-                            
-                        %>
+                        <% for (let index=0; index < movieList.length; index++) { 
+                            const movie=movieList[index]
+                            const movieName= movie.nome; 
+                            const posterImage=movie.Images.find(s=> s.tipo_imagem == 2).diretorio;
+                            const posterImageSource = `/src/public/images/${movie.id}${posterImage}`
+                            var rating = getRatingClass(movie.classificacao);
+
+                            %>
                             <div class="col-md-3">
+                                <div class="card-movie" data-id="<%= movie.id %>">
 
-                                <img class="img-fluid " src=" <%=posterImageSource%> " alt="">
+                                    <img class="img-fluid " src=" <%=posterImageSource%> " alt="<%= movie.nome %>">
 
-                                <h4>
-                                    <%= movieName %>
-                                </h4>
-                                <i class="fa-solid fa-star icon-active"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                                    <div class="card-movie-info">
+                                        <div class="movie-rating pg-sm rating-pull-right <%= rating %> ">
+                                            <%= movie.classificacao %>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="p-2">
+                                        <h4 class="text-light">
+                                            <%= movieName %>
+                                        </h4>
+                                    </div>
+                                    <i class="fa-solid fa-star icon-active"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
                             </div>
 
                             <% } %>
