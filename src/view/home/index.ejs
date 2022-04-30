@@ -28,57 +28,29 @@
                     <h5 class="movies-main-header-custom px-3">Em Cartaz</h5>
 
                     <div class="row px-3">
+                        <%
+                        for (let index = 0; index < movieList.length; index++) {
+                            const movie = movieList[index]
+                            const movieName = movie.nome;
+                            const posterImage = movie.Images.find(s => s.tipo_imagem == 2).diretorio;
+                            const posterImageSource =  `/src/public/images/${movie.id}${posterImage}`
+                            
+                        %>
+                            <div class="col-md-3">
 
-                        <div class="col-md-3">
+                                <img class="img-fluid " src=" <%=posterImageSource%> " alt="">
 
-                            <img class="img-fluid " src="https://image.tmdb.org/t/p/original/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg" alt="">
+                                <h4>
+                                    <%= movieName %>
+                                </h4>
+                                <i class="fa-solid fa-star icon-active"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
 
-                            <h4>Teste</h4>
-                            <i class="fa-solid fa-star icon-active"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-
-
-
-                        </div>
-
-                        <div class="col-md-3">
-
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p/original/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg" alt="">
-
-                            <h4>Teste</h4>
-                            <i class="fa-solid fa-star icon-active"></i>
-                            <i class="fa-solid fa-star icon-active"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-
-                        <div class="col-md-3">
-
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p/original/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg" alt="">
-
-                            <h4>Teste</h4>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-
-                        <div class="col-md-3">
-
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p/original/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg" alt="">
-
-                            <h4>Teste</h4>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
+                            <% } %>
                     </div>
                 </div>
             </div>
