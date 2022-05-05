@@ -32,11 +32,10 @@ module.exports = {
                 tipo_agendamento: schedule.frontCover
             });
         } catch (e) {
-
             return response.json({ text: e.message, status: false });
         }
-
-        return response.json({ text: "Agendamento realizado com sucesso", status: true });
+        return response.redirect(300, "/");
+        //return response.json({ text: "Agendamento realizado com sucesso", status: true });
 
     }
 
