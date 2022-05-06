@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 const Adress = require('./Adress');
-const Review = require('./Review');
 const News = require('./News');
 const Order = require('./Order');
 
@@ -40,10 +39,6 @@ const User = db.define('User', {
 User.belongsTo(Adress, {
     constraint: true,
     foreignKey: "id_endereco"
-});
-
-User.hasMany(Review, {
-    foreignKey: "id_usuario"
 });
 
 User.hasMany(News, {

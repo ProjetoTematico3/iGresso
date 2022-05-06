@@ -7,7 +7,8 @@ const api = require("../api");
 const db = require("../database");
 const Movie = require("../model/Movie");
 const Image = require("../model/Image");
-
+const Gender = require("../model/Gender");
+const MovieXGenders = require("../model/MovieXGenders");
 
 
 module.exports = {
@@ -81,18 +82,26 @@ const createMovie = async (element, download_images = false) => {
   });
 
   if (checkMovie.length == 0) {
-    var classificacao ="--";
+    var classificacao = "--";
 
     const result = await api.get(`/movie/${element.id}`);
     try {
       const release_dates = result.data.release_dates.results.find(s => s.iso_3166_1 == "BR").release_dates;
-      if(release_dates != undefined && release_dates != null && release_dates.length > 0){
+      if (release_dates != undefined && release_dates != null && release_dates.length > 0) {
         classificacao = release_dates[0].certification;
       }
+
+      if (result.data.genres != undefined && result.data.genres != null && result.data.genres.length > 0) {
+        for (let index = 0; index < result.data.genres.length; index++) {
+          const element = result.data.genres[index];
+          await AddGender(element);
+        }
+      }
+
     } catch (error) {
-      
+
     }
-   
+
 
     await Movie.create({
       nome: element.title,
@@ -102,6 +111,13 @@ const createMovie = async (element, download_images = false) => {
       classificacao: classificacao,
       api_id: element.id
     }).then(async (movie) => {
+
+      if (result.data.genres != undefined && result.data.genres != null && result.data.genres.length > 0) {
+        for (let index = 0; index < result.data.genres.length; index++) {
+          const element = result.data.genres[index];
+          await SetGender(movie.id, element.id);
+        }
+      }
 
       await downloadImageMovie(movie.id, element.backdrop_path, 1);
       await downloadImageMovie(movie.id, element.poster_path, 2);
@@ -117,20 +133,55 @@ const createMovie = async (element, download_images = false) => {
 }
 
 const downloadImageMovie = async (id, sub_path, image_type) => {
-  const image_url = `https://image.tmdb.org/t/p/w500${sub_path}`;
-  var root_path = __dirname; root_path = root_path.replace("utils", "public");
-  const movie_path = path.resolve(root_path, 'images', id.toString());
-  const full_path = movie_path + sub_path;
-  await fs.promises.mkdir(movie_path, { recursive: true })
-  const writer = await fs.createWriteStream(full_path);
-  const response = await api.get(image_url, { responseType: 'stream' });
-  await response.data.pipe(writer);
+  try {
+    const image_url = `https://image.tmdb.org/t/p/w500${sub_path}`;
+    var root_path = __dirname; root_path = root_path.replace("utils", "public");
+    const movie_path = path.resolve(root_path, 'images', id.toString());
+    const full_path = movie_path + sub_path;
+    await fs.promises.mkdir(movie_path, { recursive: true })
+    const writer = await fs.createWriteStream(full_path);
+    const response = await api.get(image_url, { responseType: 'stream' });
+    await response.data.pipe(writer);
 
-  Image.create({
-    diretorio: sub_path,
-    tipo_imagem: image_type,
-    id_filme: id
+    Image.create({
+      diretorio: sub_path,
+      tipo_imagem: image_type,
+      id_filme: id
+    });
+  } catch (error) {
+
+  }
+
+}
+
+const AddGender = async (gender) => {
+  var checkGender = await Gender.findAll({
+    where: {
+      api_id: gender.id
+    }
   });
+  if (checkGender.length == 0) {
+    await Gender.create({
+      nome: gender.name,
+      api_id: gender.id
+    });
+  }
+}
+
+const SetGender = async (id_movie, api_id_gender) => {
+  var checkGender = await Gender.findAll({
+    where: {
+      api_id: api_id_gender
+    }
+  });
+  if (checkGender.length > 0) {
+    await MovieXGenders.create({
+      id_movie: id_movie,
+      id_gender: checkGender[0].id
+    });
+  }
+
+
 }
 
 

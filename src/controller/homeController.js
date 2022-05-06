@@ -1,7 +1,7 @@
 const Schedule = require('../model/Schedule');
 const Movie = require('../model/Movie');
 const Image = require('../model/Image');
-
+const Review = require('../model/Review');
 
 module.exports = {
 
@@ -14,7 +14,10 @@ module.exports = {
 
         for (let index = 0; index < scheduleList.length; index++) {
             movieList[index] = await Movie.findByPk(scheduleList[index].Movie.id, {
-                include: Image,
+                include: [
+                    { model: Review },
+                    { model: Image }
+                ]
             });
         }
 

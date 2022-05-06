@@ -1,0 +1,36 @@
+<% include ('../viewUtils') %> 
+<% if (!!locals.review_list && review_list.length > 0) { %>
+    <% for (let index = 0; index < review_list.length; index++) {
+
+        const review = review_list[index];
+    %>
+
+        <div class="review-box">
+
+            <div class="review-user-info">
+                <i class="icon fa-solid fa-user fa-3x"></i>
+                <span class="review-user-info-text name"><%= review.User.nome %></span>
+                <span class="review-user-info-text date"><%= formatDate(review.review_date) %></span>
+            </div>
+
+            <div class="review-text-box-container">
+                <% if(!!locals.user && user.id == review.User.id ) { %>
+                    <button class="btn btn-info btn-sm btn-delete-review" data-review="<%=review.id%>"> <i class="fa-solid fa-xmark"></i> Deletar Review</button>
+                <% } %>
+                <div class="review-stars">
+                <%- getRatingStars(review.likes) %>
+                </div>
+                <div class="review-text-box">
+                    <p> <%= review.texto %></p>
+                </div>
+            </div>
+
+        </div>
+
+
+    <% } %>
+<% } else { %>
+
+ <div class="text-purple">Sem avaliações</div>
+
+<% } %>

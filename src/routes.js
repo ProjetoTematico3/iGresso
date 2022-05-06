@@ -36,8 +36,10 @@ routes.get('/SignUp', LoginController.signup);
 
 routes.get('/Movies', MovieController.index);
 routes.get('/Movie/:id', MovieController.movie);
-
+routes.post('/Movie/AddReview', MovieController.addReview);
 routes.post('/movieList', MovieController.list);
+routes.post('/reviewList', MovieController.reviewList);
+routes.get('/deleteReview', MovieController.deleteReview);
 
 
 

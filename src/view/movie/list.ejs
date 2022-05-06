@@ -1,10 +1,18 @@
 <% include ('../viewUtils') %> 
 <% if (!!locals.movie_list) { %>
     <% for (let index = 0; index < movie_list.length; index++) {
-        const movie = movie_list[index];
+         const movie = movie_list[index];
+         var poster_image = "";
+         var poster_image_src = "";
+        try {
+            
+         poster_image = movie.Images.find(s=> s.tipo_imagem == 2).diretorio;
+         poster_image_src = `/src/public/images/${movie.id}${poster_image}`;
+        } catch (error) {
+            
+        }
+     
 
-        const poster_image= movie.Images.find(s=> s.tipo_imagem == 2).diretorio;
-        const poster_image_src = `/src/public/images/${movie.id}${poster_image}`;
         var rating = getRatingClass(movie.classificacao);
     %>
     <div class="col-lg-2 col-md-3 col-6">
@@ -16,11 +24,7 @@
                 </div>
             </div>
             <div class="card-movie-stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                <%- getRatingStars(getAVGReview(movie.Reviews)) %>
             </div>
             <div class="card-movie-title">
                 <%= movie.nome %>

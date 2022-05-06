@@ -18,7 +18,7 @@ repo = require('./Schedule');
 repo = require('./Seat');
 repo = require('./Team');
 repo = require('./MovieSync');
-
+repo = require('./MovieXGenders');
 
 
 module.exports = repo;

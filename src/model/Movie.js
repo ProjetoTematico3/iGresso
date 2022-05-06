@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../database');
 const Team = require('./Team');
 const Image = require('./Image');
-
+const Review = require('./Review');
 const Movie = db.define('Movie', {
     id: {
         type: Sequelize.INTEGER,
@@ -54,5 +54,11 @@ Movie.belongsTo(Team, {
 Movie.hasMany(Image, {
     foreignKey: "id_filme"
 });
+
+Movie.hasMany(Review, {
+    foreignKey: "id_filme"
+});
+
+
 
 module.exports = Movie;

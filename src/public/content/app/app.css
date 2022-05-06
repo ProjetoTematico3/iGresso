@@ -40,8 +40,46 @@ body {
     margin: 1.5rem 0 !important;
 }
 
-.i-input:focus {
+.i-textarea{
+    background: transparent; 
+    color: white; 
+    resize: none;
+}
+.i-textarea::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: white !important;
+}
+
+.i-textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: white !important;
+    opacity: 1;
+}
+
+.i-textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: white !important;
+    opacity: 1;
+}
+
+.i-textarea:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white !important;
+}
+
+.i-textarea::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white !important;
+}
+
+.i-textarea::placeholder {
+    /* padrao*/
+    color: white !important;
+}
+
+.i-input:focus, .i-textarea:focus {
     background: transparent;
+    color: white;
 }
 
 .i-input-purple {
@@ -329,7 +367,7 @@ body {
     text-align: justify;
 }
 
-.sinopse {
+.movie-info-block-title {
     color: var(--purple);
     font-weight: 300;
     border-bottom: 1px solid var(--purple);
@@ -405,4 +443,98 @@ body {
     color: var(--purple);
     margin: 1rem 0 2rem;
     font-size: 1.5rem;
+}
+
+.movie-genres{
+    color: white;
+    padding: 0.7rem;
+    font-weight: 300;
+}
+
+
+.review-box{
+    display: flex;
+    position: relative;
+    width: 100%;
+    color: white;
+    border-bottom: 1px solid white;
+    /* flex-flow: wrap; */
+}
+
+.review-box:not(:first-child){
+    margin-bottom: 1rem;
+}
+
+.review-box .icon{
+    color: var(--purple);
+}
+
+.review-user-info{
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.review-user-info-text{
+    font-weight: 200;
+    margin: 0.3rem 0;
+    display: block;
+}
+
+.review-user-info-text.name{
+    color: var(--purple) !important;
+}
+.review-user-info-text .date{
+    font-size: 10pt;
+}
+
+.review-stars{
+    font-size: 12pt;
+    margin: 0.8rem 0;
+}
+
+.review-text-box-container
+{
+     padding: 0 1rem;
+}
+.review-options{
+    position: relative;
+}
+.review-text-box{
+    padding: 0 0.2rem;
+}
+
+.review-stars span{
+    font-weight: 300;
+}
+
+#btn-send-review{
+    margin: 0.5rem 0;
+    float: right;
+    width: 12rem;
+    margin-bottom: 3rem;
+}
+
+.review-star{
+    cursor: pointer;
+}
+
+.fa-star{
+    margin-left: 0.2rem;
+}
+
+.fa-star.marked{
+    color: var(--purple) !important;
+}
+
+.text-purple{
+    color: var(--purple);
+}
+
+.movie-review-avg{
+    margin-bottom: 1rem;
+}
+
+.btn-delete-review{
+    position: absolute;
+    right: 0;
 }

@@ -2,7 +2,7 @@
     <% const backdrop_image=movie.Images.find(s=> s.tipo_imagem == 1).diretorio;
         const backdrop_image_src = `/src/public/images/${movie.id}${backdrop_image}`;
         var rating = getRatingClass(movie.classificacao);
-    %>
+        %>
 
         <div class="movie-container">
 
@@ -20,9 +20,15 @@
                                         <div class="movie-title">
                                             <%= movie.nome %>
                                         </div>
+                                        <div class="movie-review-avg">
+                                            <%- getRatingStars(getAVGReview(movie.Reviews)) %>
+                                        </div>
                                         <div class="movie-infos">
                                             <div class="movie-rating pg <%= rating %> ">
                                                 <%= movie.classificacao %>
+                                            </div>
+                                            <div class="movie-genres">
+                                                <%= movie.MovieXGenders.map((e)=>{return e.Gender.nome}).join(", ") %>
                                             </div>
                                         </div>
                                     </div>
@@ -32,9 +38,40 @@
                             </div>
                         </div>
                         <div class="movie-info-block">
-                            <h3 class="sinopse">Sinopse</h3>
-                            <p><%= movie.descricao %> </p>
+                            <h3 class="movie-info-block-title">Sinopse</h3>
+                            <p>
+                                <%= movie.descricao %>
+                            </p>
                         </div>
+
+
+                        <div class="movie-info-block">
+                            <h3 class="movie-info-block-title">Avaliações</h3>
+
+                            <% if(!!locals.user) { %>
+                                <div class="review-box" id="write-review" data-id="<%= movie.id %>">
+                                    <div class="review-text-box-container">
+                                        <div class="review-stars">
+                                            <span>Dê a sua nota &nbsp;</span>
+                                            <i class="review-star fa-solid fa-star"></i>
+                                            <i class="review-star fa-solid fa-star"></i>
+                                            <i class="review-star fa-solid fa-star"></i>
+                                            <i class="review-star fa-solid fa-star"></i>
+                                            <i class="review-star fa-solid fa-star"></i>
+                                        </div>
+                                        <textarea class="form-control i-textarea" id="text-review" rows="5" cols="173" placeholder="escreva sua avaliação"></textarea>
+                                        <button class="btn btn-primary-purple" id="btn-send-review"> Confirmar</button>
+                                    
+                                    </div>
+
+                                </div>
+                            <% } %>
+
+                            <div id="movie-reviews-container">
+                               
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="col-md-4">
@@ -45,11 +82,16 @@
 
             </div>
 
+
         </div>
 
 
 
 
+<script>
+    $(() => {
+        loadReviews('<%=movie.id%>');
+    });
+</script>
 
-
-        <%- include('../layout/footer') %>
+<%- include('../layout/footer') %>

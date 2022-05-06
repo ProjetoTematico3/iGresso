@@ -1,5 +1,36 @@
 <% 
 
+
+getAVGReview = (reviewArray) =>{
+    let sum = 0
+    for(let i in reviewArray) {
+        sum += reviewArray[i].likes;
+    }
+    return Math.floor(sum/reviewArray.length);
+}
+
+getRatingStars = (rating) =>{
+    var starArray = []
+    for (let index = 1; index <= 5; index++) {
+        if(index <= rating)
+            starArray.push('<i class="fa-solid fa-star marked"></i>');
+        else
+            starArray.push('<i class="fa-solid fa-star"></i>');
+    }
+    return starArray.join("");
+}
+
+
+formatDate = (date) =>{
+
+    if(!date)
+        return "-";
+    const d  = date.getDate().toString().padStart(2, '0');
+    const m  = (date.getMonth()+1).toString().padStart(2, '0');
+    const y  = date.getFullYear();
+    return `${d}/${m}/${y}`;
+}
+
  getRatingClass = (rating) =>{
     var rating_class = "pg-none";
 

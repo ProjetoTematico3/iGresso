@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 const Movie = require('./Movie');
+const User = require('./User');
 
 const Review = db.define('Review', {
     id: {
@@ -11,19 +12,41 @@ const Review = db.define('Review', {
     },
     texto: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
     },
 
     likes: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
         allowNull: false,
     },
 
+    id_filme: {
+        type: Sequelize.INTEGER,
+        autoIncrement: false,
+        allowNull: false,
+    },
+    id_usuario: {
+        type: Sequelize.INTEGER,
+        autoIncrement: false,
+        allowNull: false,
+    },
+
+    review_date: {
+        type: Sequelize.DATE,
+        allowNull: false,
+    }
+
 });
 
-Review.belongsTo(Movie, {
+
+Review.belongsTo(User, {
     constraint: true,
-    foreignKey: 'id_filme'
+    foreignKey: 'id_usuario'
 });
+
+
+
+
 
 module.exports = Review;
