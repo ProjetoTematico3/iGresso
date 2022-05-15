@@ -31,7 +31,8 @@ module.exports = {
         }
 
         // let res = encodeURIComponent("Sala criada com sucesso");
-        return response.redirect(300, "/Schedule");
+        return response.redirect("/Schedule");
+
         //return response.json({ text: "Sala criada com sucesso", status: true });
 
     }

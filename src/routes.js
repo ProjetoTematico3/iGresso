@@ -13,6 +13,7 @@ const AdminController = require('./controller/adminController');
 const MovieController = require('./controller/movieController');
 const RoomController = require('./controller/roomController');
 const scheduleController = require('./controller/scheduleController');
+const newsController = require('./controller/newsController');
 
 routes.get('/', HomeController.index);
 routes.get('/Login', LoginController.login);
@@ -31,6 +32,11 @@ routes.post('/Room/Create', RoomController.create);
 
 routes.get('/Schedule', scheduleController.index);
 routes.post('/Schedule/Create', scheduleController.create);
+
+routes.get('/News', newsController.index);
+routes.get('/News/Create', newsController.create);
+
+
 
 routes.get('/SignUp', LoginController.signup);
 

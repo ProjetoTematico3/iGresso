@@ -34,7 +34,7 @@ module.exports = {
         } catch (e) {
             return response.json({ text: e.message, status: false });
         }
-        return response.redirect(300, "/");
+        return response.redirect("/");
         //return response.json({ text: "Agendamento realizado com sucesso", status: true });
 
     }
