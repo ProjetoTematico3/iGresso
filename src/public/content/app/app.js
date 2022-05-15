@@ -47,11 +47,8 @@ $(() => {
 
 
     $("#app-page").on('change', '#input-image', (e) => {
-        const image = $("#input-image").val();
-
-        if (image) {
-            $("#preview").removeAttr("hidden");
-        }
+        const image = $("#input-image").get(0).files[0];
+        setPreview(image);
     });
 
     $("#app-page").on('click', '#btn-insert-news', () => {
@@ -122,6 +119,20 @@ const sendNews = () => {
         Alert(JSON.stringify(data.text), data.status)
     }, 'json');
 
+}
+
+const setPreview = (image) => {
+    if (image) {
+        let reader = new FileReader();
+
+        reader.onload = function() {
+            $("#preview-image").attr("src", reader.result);
+        }
+
+        reader.readAsDataURL(image);
+
+        $("#preview").removeAttr("hidden");
+    }
 }
 
 
