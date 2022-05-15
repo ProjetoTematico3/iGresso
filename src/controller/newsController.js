@@ -11,12 +11,13 @@ module.exports = {
 
     async addNews(request, response) {
         const news = request.body;
-
+        console.log(news.newsType)
         try {
 
             await News.create({
                 titulo: news.newsTitle,
-                texto: news.newsText
+                texto: news.newsText,
+                tipo: news.newsType
             });
 
         } catch (e) {

@@ -17,6 +17,11 @@ const News = db.define('New', {
     texto: {
         type: Sequelize.STRING,
         allowNull: false,
+    },
+
+    tipo: {
+        type: Sequelize.STRING,
+        allowNull: true,
     }
 });
 
