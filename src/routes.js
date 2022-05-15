@@ -35,6 +35,7 @@ routes.post('/Schedule/Create', scheduleController.create);
 
 routes.get('/News', newsController.index);
 routes.get('/News/Create', newsController.create);
+routes.post('/News/AddNews', newsController.addNews);
 
 
 

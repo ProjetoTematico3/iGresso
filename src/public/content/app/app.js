@@ -46,17 +46,29 @@ $(() => {
     });
 
 
-    
+    $("#app-page").on('change', '#input-image', (e) => {
+        const image = $("#input-image").val();
+
+        if (image) {
+            $("#preview").removeAttr("hidden");
+        }
+    });
+
+    $("#app-page").on('click', '#btn-insert-news', () => {
+        sendNews();
+    });
+
+
 
 
 })
 
 
-const deleteReview = (id) =>{
+const deleteReview = (id) => {
 
-    $.getJSON('/deleteReview', {id: id}, (data) => {
+    $.getJSON('/deleteReview', { id: id }, (data) => {
         Alert(data.text, data.status);
-        if(data.status)
+        if (data.status)
             loadReviews(data.id_movie);
 
 
@@ -89,6 +101,7 @@ const sendReview = () => {
     $.post('/Movie/AddReview', { text: text, rating: rating, id_movie: id_movie }, (data) => {
         Alert(data.text, data.status);
         $('#text-review').val('');
+        src / public / content / app / app.js
         $('#write-review .review-star.marked').removeClass('marked');
         return loadReviews(id_movie);
     }, 'json');
@@ -98,6 +111,19 @@ const sendReview = () => {
 const loadReviews = (id_movie) => {
     $('#movie-reviews-container').load('/reviewList', { id_movie: id_movie });
 }
+
+
+const sendNews = () => {
+    const newsTitle = $("#news-title").val();
+    const newsText = $("#content").val();
+    const newsType = $("input[name=type]:checked").val();
+
+    $.post("/News/AddNews", { newsTitle: newsTitle, newsText: newsText, newsType: newsType }, (data) => {
+        Alert(JSON.stringify(data.text), data.status)
+    }, 'json');
+
+}
+
 
 const Alert = (text, status = false) => {
     const background = {

@@ -569,3 +569,8 @@ body {
     transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
     transition-delay: 0s, 0s, 0s, 0s;
 }
+
+.form-check-custom:checked {
+    background-color: var(--purple);
+    border-color: var(--purple);
+}
