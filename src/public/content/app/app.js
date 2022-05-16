@@ -117,7 +117,15 @@ const sendNews = () => {
 
     $.post("/News/AddNews", { newsTitle: newsTitle, newsText: newsText, newsType: newsType }, (data) => {
         Alert(JSON.stringify(data.text), data.status)
+        clearNews();
     }, 'json');
+}
+
+const clearNews = () => {
+    $("#news-title").val("");
+    $("#content").val("");
+    $("input[name=type]:checked").attr('checked', false);
+
 
 }
 
