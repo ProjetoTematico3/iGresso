@@ -47,10 +47,10 @@ $(() => {
     });
 
 
-    // $("#app-page").on('change', '#input-image', (e) => {
-    //     const image = $("#input-image").get(0).files[0];
-    //     setPreview(image);
-    // });
+    $("#app-page").on('change', '#input-image', (e) => {
+        const image = $("#input-image").get(0).files[0];
+        setPreview(image);
+    });
 
     $("#app-page").on('click', '#btn-insert-news', () => {
         sendNews();
@@ -74,7 +74,8 @@ const summernoteInit = () => {
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['insert', ['link', 'picture']],
                 ['view', ['codeview', 'help']]
-            ]
+            ],
+
         });
     });
 
@@ -151,8 +152,9 @@ const checkSummernote = (codeEditor) => {
 }
 
 const clearNews = () => {
-    $("#news-title").val("");
-    $("#content").val("");
+    $('#news-insert').trigger("reset");
+    $("#preview-image").val("");
+    $("#preview").attr('hidden', true);
     $("input[name=type]:checked").attr('checked', false);
 
     $("#news-normal").attr('checked', true);
@@ -175,16 +177,16 @@ const Alert = (text, status = false) => {
     }).showToast();
 }
 
-// const setPreview = (image) => {
-//     if (image) {
-//         let reader = new FileReader();
+const setPreview = (image) => {
+    if (image) {
+        let reader = new FileReader();
 
-//         reader.onload = function() {
-//             $("#preview-image").attr("src", reader.result);
-//         }
+        reader.onload = function() {
+            $("#preview-image").attr("src", reader.result);
+        }
 
-//         reader.readAsDataURL(image);
+        reader.readAsDataURL(image);
 
-//         $("#preview").removeAttr("hidden");
-//     }
-// }
+        $("#preview").removeAttr("hidden");
+    }
+}
