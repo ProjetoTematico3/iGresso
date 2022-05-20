@@ -1,5 +1,6 @@
 $(() => {
 
+    summernoteInit();
 
     $("#app-page").on('click', '#test_button', () => {
         alert("MIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU");
@@ -46,10 +47,10 @@ $(() => {
     });
 
 
-    $("#app-page").on('change', '#input-image', (e) => {
-        const image = $("#input-image").get(0).files[0];
-        setPreview(image);
-    });
+    // $("#app-page").on('change', '#input-image', (e) => {
+    //     const image = $("#input-image").get(0).files[0];
+    //     setPreview(image);
+    // });
 
     $("#app-page").on('click', '#btn-insert-news', () => {
         sendNews();
@@ -59,6 +60,25 @@ $(() => {
 
 
 })
+
+const summernoteInit = () => {
+    $(() => {
+        $('#summernote').summernote({
+            tabsize: 1,
+            minHeight: 150,
+            placeholder: "Insira o contéudo da notícia",
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture']],
+                ['view', ['codeview', 'help']]
+            ]
+        });
+    });
+
+}
 
 
 const deleteReview = (id) => {
@@ -109,11 +129,13 @@ const loadReviews = (id_movie) => {
     $('#movie-reviews-container').load('/reviewList', { id_movie: id_movie });
 }
 
-
 const sendNews = () => {
+    // const newsText = $("#content").val();
     const newsTitle = $("#news-title").val();
-    const newsText = $("#content").val();
+    const newsText = $('#summernote').summernote('code');
     const newsType = $("input[name=type]:checked").val();
+
+
 
     $.post("/News/AddNews", { newsTitle: newsTitle, newsText: newsText, newsType: newsType }, (data) => {
         Alert(JSON.stringify(data.text), data.status)
@@ -121,27 +143,22 @@ const sendNews = () => {
     }, 'json');
 }
 
+const checkSummernote = (codeEditor) => {
+    if (codeEditor != null) {
+        $("#helper-summernote").attr('hidden', false);
+        return;
+    }
+}
+
 const clearNews = () => {
     $("#news-title").val("");
     $("#content").val("");
     $("input[name=type]:checked").attr('checked', false);
 
-
+    $("#news-normal").attr('checked', true);
+    $("#summernote").summernote('code', '', { placeholder: 'Insira o contéudo da notícia' });
 }
 
-const setPreview = (image) => {
-    if (image) {
-        let reader = new FileReader();
-
-        reader.onload = function() {
-            $("#preview-image").attr("src", reader.result);
-        }
-
-        reader.readAsDataURL(image);
-
-        $("#preview").removeAttr("hidden");
-    }
-}
 
 
 const Alert = (text, status = false) => {
@@ -157,3 +174,17 @@ const Alert = (text, status = false) => {
 
     }).showToast();
 }
+
+// const setPreview = (image) => {
+//     if (image) {
+//         let reader = new FileReader();
+
+//         reader.onload = function() {
+//             $("#preview-image").attr("src", reader.result);
+//         }
+
+//         reader.readAsDataURL(image);
+
+//         $("#preview").removeAttr("hidden");
+//     }
+// }

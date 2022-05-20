@@ -14,11 +14,14 @@
         <script src="/src/public/content/jquery/jquery-3.6.0.min.js"></script>
         <script src="/src/public/content/bootstrap/js/bootstrap.min.js"></script>
         <script src="/src/public/content/toastify/toastify-js.js"></script>
+        <script src="/src/public/content/summernote/summernote.min.js"></script>
         <script src="/src/public/content/app/app.js"></script>
         <link rel="stylesheet" href="/src/public/content/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/src/public/content/toastify/toastify.min.css">
         <link rel="stylesheet" href="/src/public/content/app/app.css">
         <link rel="stylesheet" href="/src/public/content/fontawesome/css/fontawesome.min.css">
+        <link href="/src/public/content/summernote/summernote.min.css" rel="stylesheet">
+
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
         />
@@ -32,8 +35,8 @@
                     <div class="igresso-logo"></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -54,7 +57,7 @@
 
 
                         <% if (!!locals.user) {%>
-                            <% if (user.tipo_usuario == 0) { %>
+                            <% if (user.tipo_usuario==0) { %>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/Admin">Administração</a>
                                 </li>
@@ -62,8 +65,8 @@
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"><i class="fas fa-user"></i>
-                                <%= user.nome %>
-                            </a>
+                                            <%= user.nome %>
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/Logout">Sair</a>
