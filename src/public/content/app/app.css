@@ -561,10 +561,6 @@ body {
     border-radius: 0.25rem;
 }
 
-.btn {
-    color: #ffffff;
-}
-
 .file-custom-input::file-selector-button:hover {
     color: #212529;
     transition: .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -579,10 +575,16 @@ body {
     border-color: var(--purple);
 }
 
-.note-editable {
+
+/* .note-editable {
     color: white;
 }
 
 .note-icon-magic {
     color: white;
-}
+} */
+
+
+/* .btn {
+    color: #ffffff;
+} */

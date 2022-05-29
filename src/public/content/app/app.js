@@ -2,6 +2,7 @@ $(() => {
 
     summernoteInit();
 
+
     $("#app-page").on('click', '#test_button', () => {
         alert("MIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU");
 
@@ -53,13 +54,17 @@ $(() => {
     });
 
     $("#app-page").on('click', '#btn-insert-news', () => {
-        sendNews();
+        if (isSummernoteEmpty()) {
+            return;
+        } else {
+            sendNews();
+            // summernoteImages()
+        }
     });
 
 
-
-
 })
+
 
 const summernoteInit = () => {
     $(() => {
@@ -75,11 +80,31 @@ const summernoteInit = () => {
                 ['insert', ['link', 'picture']],
                 ['view', ['codeview', 'help']]
             ],
+            "codemirror": {
+                theme: "darkly"
+            },
+            // callbacks: {
+            //     onImageUpload: function(image) {
 
+            //         summernoteImages(image)
+
+            //     }
+            // }
         });
     });
 
 }
+
+
+// function summernoteImages(image) {
+//     let arq = new FormData();
+//     arq.append("image", image);
+//     console.log(arq);
+//     console.log(image);
+
+
+//     $('#summernote').summernote("insertNode", image);
+// }
 
 
 const deleteReview = (id) => {
@@ -136,19 +161,20 @@ const sendNews = () => {
     const newsText = $('#summernote').summernote('code');
     const newsType = $("input[name=type]:checked").val();
 
-
-
     $.post("/News/AddNews", { newsTitle: newsTitle, newsText: newsText, newsType: newsType }, (data) => {
         Alert(JSON.stringify(data.text), data.status)
         clearNews();
     }, 'json');
 }
 
-const checkSummernote = (codeEditor) => {
-    if (codeEditor != null) {
+const isSummernoteEmpty = () => {
+
+    if ($("#summernote").summernote("isEmpty")) {
         $("#helper-summernote").attr('hidden', false);
-        return;
+        return true;
     }
+    $("#helper-summernote").attr('hidden', true);
+    return false;
 }
 
 const clearNews = () => {
@@ -156,26 +182,10 @@ const clearNews = () => {
     $("#preview-image").val("");
     $("#preview").attr('hidden', true);
     $("input[name=type]:checked").attr('checked', false);
-
     $("#news-normal").attr('checked', true);
-    $("#summernote").summernote('code', '', { placeholder: 'Insira o contéudo da notícia' });
+    $('#summernote').summernote('reset');
 }
 
-
-
-const Alert = (text, status = false) => {
-    const background = {
-        success: "#167323",
-        error: "#991f1f"
-    }
-    Toastify({
-        text: text,
-        backgroundColor: status ? background.success : background.error,
-        duration: status ? 3000 : -1,
-        close: status ? false : true
-
-    }).showToast();
-}
 
 const setPreview = (image) => {
     if (image) {
@@ -189,4 +199,18 @@ const setPreview = (image) => {
 
         $("#preview").removeAttr("hidden");
     }
+}
+
+const Alert = (text, status = false) => {
+    const background = {
+        success: "#167323",
+        error: "#991f1f"
+    }
+    Toastify({
+        text: text,
+        backgroundColor: status ? background.success : background.error,
+        duration: status ? 3000 : -1,
+        close: status ? false : true
+
+    }).showToast();
 }

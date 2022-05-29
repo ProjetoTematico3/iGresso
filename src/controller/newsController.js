@@ -10,21 +10,32 @@ module.exports = {
     },
 
     async addNews(request, response) {
-        const news = request.body;
-        console.log(news.newsType)
-        try {
+        const { newsTitle, newsText, newsType } = request.body;
+        getBase64(newsText);
 
-            await News.create({
-                titulo: news.newsTitle,
-                texto: news.newsText,
-                tipo: news.newsType
-            });
+        // try {
 
-        } catch (e) {
-            return response.json({ text: e.message, status: false });
-        }
+        //     await News.create({
+        //         titulo: news.newsTitle,
+        //         texto: news.newsText,
+        //         tipo: news.newsType
+        //     });
 
-        return response.json({ text: "Sucesso.", status: true });
+        // } catch (e) {
+        //     return response.json({ text: e.message, status: false });
+        // }
+
+        // return response.json({ text: "Sucesso.", status: true });
     }
-
 }
+
+function getBase64(text) {
+    let base64;
+    if (text.indexOf('base64') > 0) {
+        base64 = String(text).match(/("data:image)(([^"]+))/gi);
+    }
+}
+
+// function compressBase64Image(base64Initial) {
+
+// }

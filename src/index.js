@@ -25,7 +25,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 30 * 60 * 1000 }
 }))
-app.use(express.urlencoded({ extended: true }))
+
+app.use(express.urlencoded({ limit: '20mb', extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
