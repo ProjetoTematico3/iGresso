@@ -13,6 +13,7 @@ const sequelize = require('./database');
 const User = require('./model/User');
 const Adress = require('./model/Adress');
 const MovieTheater = require('./model/MovieTheater');
+const Product = require('./model/Product');
 
 // Repositorio com todas as models
 const repository = require('./model/modelRepository');
@@ -44,6 +45,140 @@ app.use('/src/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 //db.sync({ force: true }); 
+
+//// Cria produtos senão existir
+// (async() => { 
+//     try {
+//         var checkUser = await Product.findByPk(1);
+//         if (checkUser == null) {
+//             await Product.create({
+//                 nome: 'Pipoca Salgada Grande ',
+//                 preco: 26.50,
+//                 quantidade: 189,
+                
+//             })
+//             await Product.create({
+//                 nome: 'Pipoca Salgada Média ',
+//                 preco: 20.45,
+//                 quantidade: 205,
+                
+//             })
+//             await Product.create({
+//                 nome: 'Pipoca Salgada Pequena ',
+//                 preco: 16.50,
+//                 quantidade: 225,
+                
+//             })
+//             await Product.create({
+//                 nome: 'Pipoca Doce Grande ',
+//                 preco: 27.00,
+//                 quantidade: 189,
+                
+//             })
+//             await Product.create({
+//                 nome: 'Pipoca Doce Média ',
+//                 preco: 22.15,
+//                 quantidade: 205,
+                
+//             })
+//             await Product.create({
+//                 nome: 'Pipoca Doce Pequena ',
+//                 preco: 17.70,
+//                 quantidade: 225,
+                
+//             })
+//             await Product.create({
+//                 nome: 'Refrigerante 900ml',
+//                 preco: 18.10,
+//                 quantidade: 112,
+//             })
+//             await Product.create({
+//                 nome: 'Refrigerante 500ml',
+//                 preco: 12.10,
+//                 quantidade: 112,
+//             })
+//             await Product.create({
+//                 nome: 'Refrigerante 300ml',
+//                 preco: 8.25,
+//                 quantidade: 122,
+//             })
+//             await Product.create({
+//                 nome: 'Refrigerante Lata',
+//                 preco: 6.25,
+//                 quantidade: 232,
+//             })
+//             await Product.create({
+//                 nome: 'Refrigerante Pet 600ml ',
+//                 preco: 10.05,
+//                 quantidade: 232,
+//             })
+//             await Product.create({
+//                 nome: 'Cerveja Long Neck',
+//                 preco: 13.30,
+//                 quantidade: 89,
+//             })
+//             await Product.create({
+//                 nome: 'Salgadinho Doritos 70g',
+//                 preco: 6.75,
+//                 quantidade: 222,
+//             })
+//             await Product.create({
+//                 nome: 'Salgadinho Doritos 110g',
+//                 preco: 15.75,
+//                 quantidade: 232,
+//             })
+//             await Product.create({
+//                 nome: 'Salgadinho Doritos 220g',
+//                 preco: 28.75,
+//                 quantidade: 282,
+//             })
+//             await Product.create({
+//                 nome: 'Salgadinho Ruffles 75g',
+//                 preco: 6.80,
+//                 quantidade: 222,
+//             })
+//             await Product.create({
+//                 nome: 'Salgadinho Ruffles 120g',
+//                 preco: 16.20,
+//                 quantidade: 152,
+//             })
+//             await Product.create({
+//                 nome: 'Salgadinho Ruffles 220g',
+//                 preco: 26.36,
+//                 quantidade: 152,
+//             })
+//             await Product.create({
+//                 nome: 'Bala de Gelatina Finni',
+//                 preco: 6.99,
+//                 quantidade: 152,
+//             })
+//             await Product.create({
+//                 nome: 'Bala Tubbes Finni',
+//                 preco: 6.99,
+//                 quantidade: 132,
+//             })
+//             await Product.create({
+//                 nome: 'Chocolate Quente Médio',
+//                 preco: 7.99,
+//                 quantidade: 232,
+//             })
+//             await Product.create({
+//                 nome: 'Chocolate Quente Grande',
+//                 preco: 11.87,
+//                 quantidade: 232,
+//             })
+//             await Product.create({
+//                 nome: 'Chocolate Quente Pequeno',
+//                 preco: 5.20,
+//                 quantidade: 232,
+//             })
+            
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })();
+
 // Cria usuário Admin senão existir
 // (async() => { 
 //     try {
@@ -91,6 +226,7 @@ app.set('views', __dirname + '/view');
 //         console.log(error);
 //     }
 // })();
+
 
 // Derruba o banco e o recria com todas as models e inserts
 //  db.sync({ force: true }); 
