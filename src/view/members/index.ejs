@@ -1,0 +1,33 @@
+<%- include('../layout/header') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 p-5">
+                <h5 class="display-5 text-light text-center">Cadastro de Funcionarios</h5>
+
+                <form method="POST" action="">
+
+                    <div class="mb-3 mt-5 input-include">
+                        <label for="identification" class="form-label text-light">Nome do funcionario</label>
+                        <input required type="text" class="form-control" id="NameMembers" placeholder="NameMembers" name="NameMembers">
+                    </div>
+
+                    <div class="mb-3 mt-5 input-include">
+                        <label for="identification" class="form-label text-light">Função</label>
+                        <input required type="text" class="form-control" id="function" placeholder="function" name="function">
+                    </div>
+
+                    
+
+                    <button type="submit" id="btn-insert-room" class="btn btn-primary-purple mt-1">Confirmar</button>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <%- include('../layout/footer') %>
