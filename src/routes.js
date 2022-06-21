@@ -14,6 +14,8 @@ const MovieController = require('./controller/movieController');
 const RoomController = require('./controller/roomController');
 const scheduleController = require('./controller/scheduleController');
 const newsController = require('./controller/newsController');
+const memberController = require('./controller/membersController');
+
 
 routes.get('/', HomeController.index);
 routes.get('/Login', LoginController.login);
@@ -29,6 +31,8 @@ routes.post('/Register', LoginController.register);
 
 routes.get('/Room', RoomController.index);
 routes.post('/Room/Create', RoomController.create);
+
+routes.get('/Members', memberController.index);
 
 routes.get('/Schedule', scheduleController.index);
 routes.post('/Schedule/Create', scheduleController.create);
