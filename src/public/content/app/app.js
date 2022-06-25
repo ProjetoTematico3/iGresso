@@ -2,7 +2,6 @@ $(() => {
 
     summernoteInit();
 
-
     $("#app-page").on('click', '#test_button', () => {
         alert("MIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU");
 
@@ -58,13 +57,16 @@ $(() => {
             return;
         } else {
             sendNews();
-            // summernoteImages()
         }
     });
 
+    // $("#app-page").on('click', '#news-primary', () => {
+    //     $('#summernote').summernote('reset');
+    //     $('#summernote').summernote('destroy');
+    // });
+
 
 })
-
 
 const summernoteInit = () => {
     $(() => {
@@ -73,39 +75,17 @@ const summernoteInit = () => {
             minHeight: 150,
             placeholder: "Insira o contéudo da notícia",
             toolbar: [
-                ['style', ['style']],
+
                 ['font', ['bold', 'underline', 'clear']],
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['insert', ['link', 'picture']],
                 ['view', ['codeview', 'help']]
-            ],
-            "codemirror": {
-                theme: "darkly"
-            },
-            // callbacks: {
-            //     onImageUpload: function(image) {
-
-            //         summernoteImages(image)
-
-            //     }
-            // }
+            ]
         });
     });
 
 }
-
-
-// function summernoteImages(image) {
-//     let arq = new FormData();
-//     arq.append("image", image);
-//     console.log(arq);
-//     console.log(image);
-
-
-//     $('#summernote').summernote("insertNode", image);
-// }
-
 
 const deleteReview = (id) => {
 
@@ -123,7 +103,6 @@ const loadMovies = () => {
     const search = $('#search_movie_test').val();
     $('#movie_list').load('/movieList', { search: search });
 }
-
 
 const setMarker = (elem) => {
     const indexStar = $(elem).index();
@@ -156,10 +135,11 @@ const loadReviews = (id_movie) => {
 }
 
 const sendNews = () => {
-    // const newsText = $("#content").val();
     const newsTitle = $("#news-title").val();
     const newsText = $('#summernote').summernote('code');
     const newsType = $("input[name=type]:checked").val();
+    //const newsImagePrimary = $("#input-image").prop('files')[0];
+
 
     $.post("/News/AddNews", { newsTitle: newsTitle, newsText: newsText, newsType: newsType }, (data) => {
         Alert(JSON.stringify(data.text), data.status)
