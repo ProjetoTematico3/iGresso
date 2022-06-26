@@ -8,6 +8,7 @@ const session = require('express-session');
 const appMovies = require('./utils/appMovies');
 const db = require('./database');
 const sequelize = require('./database');
+const cors = require('cors');
 
 // Models utilizadas para inserir no banco os dados
 const User = require('./model/User');
@@ -27,6 +28,7 @@ app.use(session({
     cookie: { maxAge: 30 * 60 * 1000 }
 }))
 
+
 app.use(express.urlencoded({ limit: '20mb', extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -38,7 +40,7 @@ app.use((req, res, next) => {
 });
 
 app.use(routes);
-
+app.use(cors());
 
 app.use('/src/public', express.static(path.join(__dirname, 'public')));
 
@@ -55,37 +57,37 @@ app.set('views', __dirname + '/view');
 //                 nome: 'Pipoca Salgada Grande ',
 //                 preco: 26.50,
 //                 quantidade: 189,
-                
+
 //             })
 //             await Product.create({
 //                 nome: 'Pipoca Salgada Média ',
 //                 preco: 20.45,
 //                 quantidade: 205,
-                
+
 //             })
 //             await Product.create({
 //                 nome: 'Pipoca Salgada Pequena ',
 //                 preco: 16.50,
 //                 quantidade: 225,
-                
+
 //             })
 //             await Product.create({
 //                 nome: 'Pipoca Doce Grande ',
 //                 preco: 27.00,
 //                 quantidade: 189,
-                
+
 //             })
 //             await Product.create({
 //                 nome: 'Pipoca Doce Média ',
 //                 preco: 22.15,
 //                 quantidade: 205,
-                
+
 //             })
 //             await Product.create({
 //                 nome: 'Pipoca Doce Pequena ',
 //                 preco: 17.70,
 //                 quantidade: 225,
-                
+
 //             })
 //             await Product.create({
 //                 nome: 'Refrigerante 900ml',
@@ -172,7 +174,7 @@ app.set('views', __dirname + '/view');
 //                 preco: 5.20,
 //                 quantidade: 232,
 //             })
-            
+
 //         }
 //     } catch (error) {
 //         console.log(error);

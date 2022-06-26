@@ -1,4 +1,7 @@
 const News = require("../model/News");
+const Images = require("../model/Image");
+const upload = require('../utils/multerConfig');
+
 
 module.exports = {
     async index(request, response) {
@@ -10,32 +13,26 @@ module.exports = {
     },
 
     async addNews(request, response) {
-        const { newsTitle, newsText, newsType } = request.body;
-        getBase64(newsText);
+        upload.single("newsImage");
+        let { newsTitle, newsText, newsType } = request.body;
 
-        // try {
+        console.log(request.body);
+        try {
+            await News.create({
+                titulo: newsTitle,
+                texto: newsText,
+                tipo: newsType,
+            });
 
-        //     await News.create({
-        //         titulo: news.newsTitle,
-        //         texto: news.newsText,
-        //         tipo: news.newsType
-        //     });
+        } catch (e) {
+            return response.json({ text: e.message, status: false });
+        }
 
-        // } catch (e) {
-        //     return response.json({ text: e.message, status: false });
-        // }
+        return response.json({ text: "Sucesso.", status: true });
 
-        // return response.json({ text: "Sucesso.", status: true });
-    }
+    },
+
+
+
+
 }
-
-function getBase64(text) {
-    let base64;
-    if (text.indexOf('base64') > 0) {
-        base64 = String(text).match(/("data:image)(([^"]+))/gi);
-    }
-}
-
-// function compressBase64Image(base64Initial) {
-
-// }

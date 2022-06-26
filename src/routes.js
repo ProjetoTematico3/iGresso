@@ -15,6 +15,8 @@ const RoomController = require('./controller/roomController');
 const scheduleController = require('./controller/scheduleController');
 const newsController = require('./controller/newsController');
 const memberController = require('./controller/membersController');
+const { decodeBase64 } = require('bcryptjs');
+const upload = require('./utils/multerConfig');
 
 
 routes.get('/', HomeController.index);
@@ -39,7 +41,7 @@ routes.post('/Schedule/Create', scheduleController.create);
 
 routes.get('/News', newsController.index);
 routes.get('/News/Create', newsController.create);
-routes.post('/News/AddNews', newsController.addNews);
+routes.post('/News/AddNews', upload.single("newsImage"), newsController.addNews);
 
 
 

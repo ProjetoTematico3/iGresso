@@ -5,7 +5,7 @@
             <div class="col-md-12 p-5">
                 <h5 class="display-5 text-light text-center">Cadastro de Notícias</h5>
 
-                <form method="POST" id="news-insert">
+                <form method="post" id="news-insert" enctype="multipart/form-data">
 
                     <div class="mb-3 mt-5 input-include">
                         <label for="news-title" class="form-label text-light m-1">Titulo da notícia</label>
@@ -15,10 +15,7 @@
 
                     <div class="form-group">
                         <label for="content" class="m-1 text-light">Conteúdo</label>
-                        <!-- <textarea required class="form-control text-area-custom" id="content" rows="5"></textarea> -->
-                        <div id="summernote"></div>
-                        <small id="helper-summernote" class="text-danger m-1" aria-hidden="true" hidden>Por favor
-                            preencha com algum conteúdo</small>
+                        <textarea required class="form-control text-area-custom" id="content" rows="5"></textarea>
                     </div>
 
                     <div class="mt-4">
@@ -46,8 +43,8 @@
                         </div>
 
                         <div class="custom-file">
-                            <span class="text-light d-block mb-3">Insira a imagem de capa</span>
-                            <input type="file" class="custom-file-input file-custom-input text-light" id="input-image" accept="image/*">
+                            <span class="text-light d-block mb-3">Insira a imagem</span>
+                            <input type="file" class="custom-file-input file-custom-input text-light" name="newsImage" id="newsImage" accept="image/*">
                         </div>
                     </div>
 
