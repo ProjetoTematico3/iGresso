@@ -24,9 +24,9 @@ module.exports = {
         return response.render('login/signup', { title: "Registre-se" });
     },
 
-    async employee(request, response) {
-
-        return response.render('login/employee', { title: "Cadastrar funcionario" });
+    async functionary(request, response) {
+        
+        return response.render('login/functionary', { title: "Cadastrar funcionario" });
     },
     
     async register(request, response) {
