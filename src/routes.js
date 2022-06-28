@@ -45,7 +45,7 @@ routes.post('/News/AddNews', upload.single("newsImage"), newsController.addNews)
 
 routes.get('/SignUp', LoginController.signup);
 ////////////
-routes.get('/employee', LoginController.employee);
+routes.get('/functionary', LoginController.functionary);
 ///////////
 
 routes.get('/Movies', MovieController.index);
