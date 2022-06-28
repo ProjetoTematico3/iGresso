@@ -14,7 +14,6 @@ const MovieController = require('./controller/movieController');
 const RoomController = require('./controller/roomController');
 const scheduleController = require('./controller/scheduleController');
 const newsController = require('./controller/newsController');
-const memberController = require('./controller/membersController');
 const { decodeBase64 } = require('bcryptjs');
 const upload = require('./utils/multerConfig');
 
@@ -30,7 +29,6 @@ routes.get('/Logout', LoginController.logout);
 routes.get('/Admin', AdminController.index);
 routes.get('/Admin/SyncImages', AdminController.syncImages);
 routes.post('/Register', LoginController.register);
-
 routes.get('/Room', RoomController.index);
 routes.post('/Room/Create', RoomController.create);
 
@@ -46,6 +44,9 @@ routes.post('/News/AddNews', upload.single("newsImage"), newsController.addNews)
 
 
 routes.get('/SignUp', LoginController.signup);
+////////////
+routes.get('/employee', LoginController.employee);
+///////////
 
 routes.get('/Movies', MovieController.index);
 routes.get('/Movie/:id', MovieController.movie);
