@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const Movie = require('./Movie');
 const User = require('./User');
 
 const Review = db.define('Review', {

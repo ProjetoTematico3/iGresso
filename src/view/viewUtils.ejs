@@ -31,6 +31,25 @@ formatDate = (date) =>{
     return `${d}/${m}/${y}`;
 }
 
+formatDate2 = (date) =>{
+
+    if(!date)
+        return "-";
+    const d  = (date.getDate()+1).toString().padStart(2, '0');
+    const m  = (date.getMonth()+1).toString().padStart(2, '0');
+    const y  = date.getFullYear();
+    return `${d}/${m}/${y}`;
+}
+
+formatHour = (date) =>{
+
+    if(!date)
+        return "-";
+    const h  = date.getHours().toString().padStart(2, '0');
+    const m  = (date.getMinutes()).toString().padStart(2, '0');
+    return `${h}:${m}`;
+}
+
  getRatingClass = (rating) =>{
     var rating_class = "pg-none";
 
@@ -61,5 +80,23 @@ formatDate = (date) =>{
     }
     return rating_class;
 }
+
+groupSeats = (arraySeats) => {
+    var result_array = [];
+    for(var i = 0; i < arraySeats.length; i++){
+        var letter = arraySeats[i].identificacao[0];
+        var fitem = result_array.find(s => s.letter == letter);
+        if(fitem){
+            fitem.Seats.push(arraySeats[i]);
+        }
+        else{
+            result_array.push({letter: letter, Seats:[arraySeats[i]] });
+        }
+    }
+
+    return result_array.sort((a,b) => (a.letter > b.letter) ? 1 : ((b.letter > a.letter) ? -1 : 0));
+
+}
+
 
 %> 

@@ -575,6 +575,202 @@ body {
     border-color: var(--purple);
 }
 
+.schedules{
+    margin: 1rem 0;
+    display: inline-flex;
+    flex-flow: row;
+}
+.schedule-hours {
+    margin: auto;
+}
+.schedule-hours a{
+    text-decoration: none;
+    border: 1px solid;
+    padding: 0.2rem 0.7rem;
+    margin: 0.5rem;
+}
+
+#ingress-tabs{
+    margin-top: 20rem !important;
+    width: 30% !important;
+}
+
+#ingress-tabs-content{
+    padding-left: 1rem !important;
+}
+
+.ingress-movie-info-container{
+    position: absolute;
+    display: flex;
+    width: 23rem;
+}
+
+.ingress-movie-info-poster{
+    width: 50%;
+}
+
+.ingress-movie-info-details{
+    width: 50%;
+    margin-top: 0.6rem;
+    color: white !important;
+}
+
+.ingress-movie-info-details div{
+    margin-bottom: 1rem;
+}
+
+.ingress-movie-info-details div:not(:first-child){
+    font-size: 10pt !important;
+}
+
+.ingress-movie-info-details .fa-solid{
+    font-size: 18pt !important;
+    padding-right: 0.5rem;
+}
+
+.ingress-movie-info-language{
+    background: var(--purple) !important;
+    /* width: 100%; */
+    display: inline !important;
+    font-size: 9pt important;
+    padding: 3px important;
+}
+
+.buy-container .nav-link.active{
+    background: var(--purple) !important;
+    color: white !important;
+}
+
+.buy-container .nav-link{
+    background: var(--grey) !important;
+    border-radius: 0% !important;
+    color:  #818181;
+    text-align: left !important;
+    text-transform: uppercase;
+    padding: 1.3rem;
+    font-weight: 400;
+}
+
+.buy-container .nav-link i{
+    padding-right: 1rem !important;
+    font-size: 14pt;
+}
+
+.buy-container{
+    background: var(--dark-grey-2);
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+    padding: 0 !important;
+}
+
+.screen{
+    color: var(--purple) !important;
+    border: 1px solid var(--purple);
+    padding: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 4rem;
+}
+
+.grid-assentos{
+    display: flex;
+    margin: auto;
+    min-width: 30rem;
+    zoom: 0.8;
+}
+
+.grid{
+    margin: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.col-assentos{
+    margin-top: 1rem;
+    display: inherit;
+}
+
+.col-assentos div{
+    background: var(--grey);
+    border-radius: 360px;
+    text-align: center;
+    font-size: 7pt;
+    padding: 3px;
+    width: 23px;
+    height: 23px;
+    margin: 0.3rem;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.col-assentos div:hover{
+    background: var(--purple);
+}
+
+.col-assentos div.selected{
+    background: var(--purple);
+}
+
+.tab-content{
+    width: 70% !important;
+}
+
+.tab-pane{
+    background: var(--dark-grey-1) !important;
+}
+
+#v-pills-assentos{
+    padding: 1rem 16%;
+    height: 100vh;
+}
+
+.tab-pane{
+    height: 100vh;
+}
+
+.selected-seats{
+    display: block;
+}
+
+.tipo-ingresso-forms{
+    padding: 0 4rem;
+}
+
+.combos-forms{
+    padding: 0 4rem;
+    color: white;
+}
+
+.combos-forms img{
+    width: 100px;
+    padding: 0.3rem;
+}
+
+.tipo-ingresso-forms .row{
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--purple);
+}
+
+.combos-forms .row{
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--purple);
+}
+
+.tipo-ingresso{
+    display: block;
+    color: white !important;
+    font-weight: 700;
+    font-size: 15pt;
+}
+
+.preco-ingresso{
+    display: block;
+    color: white !important;
+    font-size: 11pt;
+
+}
+
 
 /* .note-editable {
     color: white;

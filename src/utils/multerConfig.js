@@ -11,7 +11,7 @@ function checkDirectory() {
         return;
     } else {
         fs.mkdir(newsPath, { recursive: true }, e => {
-            console.log(e.message);
+            // console.log(e.message);
         });
     }
 }

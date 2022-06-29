@@ -17,6 +17,7 @@ const newsController = require('./controller/newsController');
 const { decodeBase64 } = require('bcryptjs');
 const upload = require('./utils/multerConfig');
 
+const IngressController = require('./controller/ingressController');
 
 routes.get('/', HomeController.index);
 routes.get('/Login', LoginController.login);
@@ -54,7 +55,7 @@ routes.post('/Movie/AddReview', MovieController.addReview);
 routes.post('/movieList', MovieController.list);
 routes.post('/reviewList', MovieController.reviewList);
 routes.get('/deleteReview', MovieController.deleteReview);
-
+routes.get('/ingress/buy/:id_schedule', IngressController.buy);
 
 
 module.exports = routes;

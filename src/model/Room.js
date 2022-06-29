@@ -16,18 +16,22 @@ const Room = db.define('Room', {
         allowNull: false,
     },
 
-    capacidade: {
+    assentos: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+
+    colunas: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
 });
 
-Room.hasMany(Schedule, {
-    foreignKey: "id_sala"
-});
 
 Room.hasMany(Seat, {
     foreignKey: "id_sala"
 });
+
+
 
 module.exports = Room;

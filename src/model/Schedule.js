@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
-const Movie = require('./Movie');
+const Room = require('./Room');
 
 const Schedule = db.define('Schedule', {
     id: {
@@ -11,7 +11,7 @@ const Schedule = db.define('Schedule', {
     },
 
     data: {
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
         allowNull: false,
     },
 
@@ -29,13 +29,19 @@ const Schedule = db.define('Schedule', {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
         allowNull: false,
+    },
+    id_filme: {
+        type: Sequelize.INTEGER,
+        autoIncrement: false,
+        allowNull: false,
     }
 });
 
-Schedule.belongsTo(Movie, {
-    constraint: true,
-    foreignKey: "id_filme"
+Room.hasMany(Schedule, {
+    foreignKey: "id_sala"
 });
 
-
+Schedule.belongsTo(Room, {
+    foreignKey: "id_sala"
+});
 module.exports = Schedule;

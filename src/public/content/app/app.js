@@ -56,7 +56,75 @@ $(() => {
     });
 
 
+    $("#app-page").on('click', '.seat', (e) => {
+        selectSeat(e.currentTarget);
+    });
+
+
+    
+
+
 })
+
+const selectSeat = (elem) =>{
+    if($(elem).hasClass('selected'))
+        $(elem).removeClass('selected');
+    else
+        $(elem).addClass('selected');
+
+    return showSelectedSeats();
+}
+
+const showSelectedSeats = () =>{
+    $('.selected-seats').remove();
+    let selectedSeats =$('.seat.selected').map((i,e)=>{
+        return $(e).html().trim();
+    }).get();
+    let strSeats = selectedSeats.join(', ');
+    $('#v-pills-assentos-tab').append(`<span class="selected-seats">${strSeats}</span>`);
+}
+
+
+const summernoteInit = () => {
+    $(() => {
+        $('#summernote').summernote({
+            tabsize: 1,
+            minHeight: 150,
+            placeholder: "Insira o contéudo da notícia",
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture']],
+                ['view', ['codeview', 'help']]
+            ],
+            "codemirror": {
+                theme: "darkly"
+            },
+            // callbacks: {
+            //     onImageUpload: function(image) {
+
+            //         summernoteImages(image)
+
+            //     }
+            // }
+        });
+    });
+
+}
+
+
+// function summernoteImages(image) {
+//     let arq = new FormData();
+//     arq.append("image", image);
+//     console.log(arq);
+//     console.log(image);
+
+
+//     $('#summernote').summernote("insertNode", image);
+// }
+
 
 const deleteReview = (id) => {
 

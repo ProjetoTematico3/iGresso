@@ -15,6 +15,7 @@ const User = require('./model/User');
 const Adress = require('./model/Adress');
 const MovieTheater = require('./model/MovieTheater');
 const Product = require('./model/Product');
+const Combo = require('./model/Combo');
 
 // Repositorio com todas as models
 const repository = require('./model/modelRepository');
@@ -48,15 +49,26 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 //db.sync({ force: true }); 
 
-//// Cria produtos senão existir
+// // Cria produtos senão existir
 // (async() => { 
 //     try {
 //         var checkUser = await Product.findByPk(1);
 //         if (checkUser == null) {
+//             await Combo.create({
+//                 descricao: "Combo 1",
+//                 preco: 42
+//             })
+
+//             await Combo.create({
+//                 descricao: "Combo 2",
+//                 preco: 36
+//             })
+
 //             await Product.create({
 //                 nome: 'Pipoca Salgada Grande ',
 //                 preco: 26.50,
-//                 quantidade: 189,
+//                 quantidade: 1,
+//                 id_combo: 1
 
 //             })
 //             await Product.create({
@@ -68,7 +80,8 @@ app.set('views', __dirname + '/view');
 //             await Product.create({
 //                 nome: 'Pipoca Salgada Pequena ',
 //                 preco: 16.50,
-//                 quantidade: 225,
+//                 quantidade: 1,
+//                 id_combo: 2
 
 //             })
 //             await Product.create({
@@ -97,52 +110,19 @@ app.set('views', __dirname + '/view');
 //             await Product.create({
 //                 nome: 'Refrigerante 500ml',
 //                 preco: 12.10,
-//                 quantidade: 112,
+//                 quantidade: 2,
+//                 id_combo: 1
 //             })
 //             await Product.create({
 //                 nome: 'Refrigerante 300ml',
 //                 preco: 8.25,
-//                 quantidade: 122,
+//                 quantidade: 1,
+//                 id_combo: 2
 //             })
 //             await Product.create({
 //                 nome: 'Refrigerante Lata',
 //                 preco: 6.25,
 //                 quantidade: 232,
-//             })
-//             await Product.create({
-//                 nome: 'Refrigerante Pet 600ml ',
-//                 preco: 10.05,
-//                 quantidade: 232,
-//             })
-//             await Product.create({
-//                 nome: 'Cerveja Long Neck',
-//                 preco: 13.30,
-//                 quantidade: 89,
-//             })
-//             await Product.create({
-//                 nome: 'Salgadinho Doritos 70g',
-//                 preco: 6.75,
-//                 quantidade: 222,
-//             })
-//             await Product.create({
-//                 nome: 'Salgadinho Doritos 110g',
-//                 preco: 15.75,
-//                 quantidade: 232,
-//             })
-//             await Product.create({
-//                 nome: 'Salgadinho Doritos 220g',
-//                 preco: 28.75,
-//                 quantidade: 282,
-//             })
-//             await Product.create({
-//                 nome: 'Salgadinho Ruffles 75g',
-//                 preco: 6.80,
-//                 quantidade: 222,
-//             })
-//             await Product.create({
-//                 nome: 'Salgadinho Ruffles 120g',
-//                 preco: 16.20,
-//                 quantidade: 152,
 //             })
 //             await Product.create({
 //                 nome: 'Salgadinho Ruffles 220g',
@@ -157,23 +137,11 @@ app.set('views', __dirname + '/view');
 //             await Product.create({
 //                 nome: 'Bala Tubbes Finni',
 //                 preco: 6.99,
-//                 quantidade: 132,
+//                 quantidade: 1,
+//                 id_combo: 1
 //             })
-//             await Product.create({
-//                 nome: 'Chocolate Quente Médio',
-//                 preco: 7.99,
-//                 quantidade: 232,
-//             })
-//             await Product.create({
-//                 nome: 'Chocolate Quente Grande',
-//                 preco: 11.87,
-//                 quantidade: 232,
-//             })
-//             await Product.create({
-//                 nome: 'Chocolate Quente Pequeno',
-//                 preco: 5.20,
-//                 quantidade: 232,
-//             })
+
+           
 
 //         }
 //     } catch (error) {

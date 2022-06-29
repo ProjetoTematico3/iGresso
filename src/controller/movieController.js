@@ -4,6 +4,7 @@ const MovieXGenders = require("../model/MovieXGenders");
 const Genders = require("../model/Gender");
 const Review = require("../model/Review");
 const User = require("../model/User");
+const Schedule = require("../model/Schedule");
 
 const sequelize = require("sequelize");
 module.exports = {
@@ -26,19 +27,21 @@ module.exports = {
             where: where,
             include: [
                 { model: Review },
-                { model: Image }
+                { model: Image },
             ]
         });
         return response.render('movie/list', { movie_list: movie_list });
     },
 
     async movie(request, response) {
+        
         const id = request.params.id;
         const movie = await Movie.findByPk(id, {
             include: [
                 { model: Review },
                 { model: MovieXGenders, include: Genders },
-                { model: Image }
+                { model: Image },
+                { model: Schedule }
             ]
         });
 

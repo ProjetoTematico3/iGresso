@@ -143,6 +143,13 @@ const downloadImageMovie = async (id, sub_path, image_type) => {
     const response = await api.get(image_url, { responseType: 'stream' });
     await response.data.pipe(writer);
 
+    await Image.destroy({
+      where: {
+        id_filme: id,
+        tipo_imagem: image_type
+      }
+    });
+
     Image.create({
       diretorio: sub_path,
       tipo_imagem: image_type,
