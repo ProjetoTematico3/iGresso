@@ -34,7 +34,6 @@ routes.post('/registration', LoginController.registration);
 routes.get('/Room', RoomController.index);
 routes.post('/Room/Create', RoomController.create);
 
-routes.get('/Members', memberController.index);
 
 routes.get('/Schedule', scheduleController.index);
 routes.post('/Schedule/Create', scheduleController.create);
