@@ -184,12 +184,6 @@ const sendNews = () => {
     const newsType = $("input[name=type]:checked").val();
     const newsImage = $("input[name=newsImage]")[0].files[0];
 
-
-    // $.post("/News/AddNews", { newsTitle: newsTitle, newsText: newsText, newsType: newsType }, (data) => {
-    //     Alert(JSON.stringify(data.text), data.status)
-    //     clearNews();
-    // }, 'json');
-
     const fd = new FormData();
     fd.append("newsText", newsText);
     fd.append("newsTitle", newsTitle);

@@ -20,8 +20,8 @@ const News = db.define('New', {
     },
 
     tipo: {
-        type: Sequelize.STRING,
-        allowNull: true,
+        type: Sequelize.INTEGER,
+        allowNull: false, // 0: normal | 1: lateral | 2: poster
     }
 });
 

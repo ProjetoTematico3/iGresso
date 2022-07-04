@@ -1,7 +1,6 @@
 const News = require("../model/News");
-const Images = require("../model/Image");
+const Image = require("../model/Image");
 const upload = require('../utils/multerConfig');
-const sequelize = require('../database');
 const fs = require('fs');
 const path = require('path');
 
@@ -19,6 +18,8 @@ module.exports = {
         upload.single("newsImage");
         let { newsTitle, newsText, newsType } = request.body;
 
+
+
         try {
             await News.create({
                     titulo: newsTitle,
@@ -29,6 +30,7 @@ module.exports = {
 
                     const rootPath = path.resolve(__dirname.replace('controller', ''), 'public', 'images', 'news');
                     const newsPath = path.join(rootPath, String(result.id));
+                    let pathImage = '';
 
                     if (!fs.existsSync(newsPath)) {
                         fs.mkdirSync(newsPath, (err) => {
@@ -37,20 +39,25 @@ module.exports = {
                             }
                         });
                     }
-                    fs.readdir(rootPath, { withFileTypes: true }, (err, directories) => {
+                    fs.readdir(rootPath, { withFileTypes: true }, async(err, directories) => {
                         if (err) {
                             return console.log("Error reading directory " + err);
                         }
-
                         const fileResult = directories.filter(directories => directories.isFile());
                         const source = path.join(rootPath, fileResult[0].name);
                         const dest = path.join(newsPath, fileResult[0].name);
-                        const pathImage = path.join(String(result.id), fileResult[0].name);
+                        pathImage = '/' + fileResult[0].name;
 
                         fs.rename(source, dest, (err) => {
                             if (err) {
                                 console.log(err);
                             }
+                        });
+
+                        await Image.create({
+                            diretorio: pathImage,
+                            tipo_imagem: newsType,
+                            id_noticias: result.id
                         });
                     });
 
