@@ -69,9 +69,9 @@ module.exports = {
         const { id } = request.query;
 
         const review = await Review.findByPk(id);
-        if(review == undefined || review == null)
+        if (review == undefined || review == null)
             return response.json({ text: "Registro não localizado", status: false });
-        
+
         await Review.destroy({ where: { id: id } });
         return response.json({ text: "Sucesso", status: true, id_movie: review.id_filme });
     },
@@ -85,7 +85,9 @@ module.exports = {
             where: {
                 id_filme: id_movie
             },
-            order: [["id", "DESC"]]
+            order: [
+                ["id", "DESC"]
+            ]
         })
 
         return response.render('movie/reviewList', { review_list: review_list });

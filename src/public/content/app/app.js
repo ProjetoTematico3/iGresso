@@ -55,19 +55,23 @@ $(() => {
         sendNews();
     });
 
+    $("#app-page").on('click', '#btn-clear-news', () => {
+        clearNews();
+    });
+
 
     $("#app-page").on('click', '.seat', (e) => {
         selectSeat(e.currentTarget);
     });
 
 
-    
+
 
 
 })
 
-const selectSeat = (elem) =>{
-    if($(elem).hasClass('selected'))
+const selectSeat = (elem) => {
+    if ($(elem).hasClass('selected'))
         $(elem).removeClass('selected');
     else
         $(elem).addClass('selected');
@@ -75,9 +79,9 @@ const selectSeat = (elem) =>{
     return showSelectedSeats();
 }
 
-const showSelectedSeats = () =>{
+const showSelectedSeats = () => {
     $('.selected-seats').remove();
-    let selectedSeats =$('.seat.selected').map((i,e)=>{
+    let selectedSeats = $('.seat.selected').map((i, e) => {
         return $(e).html().trim();
     }).get();
     let strSeats = selectedSeats.join(', ');
@@ -201,6 +205,7 @@ const sendNews = () => {
         type: 'POST',
         success: function(data) {
             Alert(JSON.stringify(data.text), true);
+            clearNews();
         },
         fail: function(data) {
             Alert(JSON.stringify(data.text), false);
