@@ -184,6 +184,10 @@ const sendNews = () => {
     const newsType = $("input[name=type]:checked").val();
     const newsImage = $("input[name=newsImage]")[0].files[0];
 
+    // if (newsText || newsTitle || newsType || newsImage == '') {
+    //     return;
+    // }
+
     const fd = new FormData();
     fd.append("newsText", newsText);
     fd.append("newsTitle", newsTitle);

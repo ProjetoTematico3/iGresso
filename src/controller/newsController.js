@@ -6,7 +6,15 @@ const path = require('path');
 
 module.exports = {
     async index(request, response) {
-        return response.render('news/index', { title: "Noticias" });
+
+        const newsList = await News.findAll({
+            include: Image,
+            order: [
+                ["tipo", "DESC"]
+            ]
+        });
+
+        return response.render('news/index', { title: "Noticias", newsList: newsList });
     },
 
     async create(request, response) {
@@ -17,8 +25,6 @@ module.exports = {
     async addNews(request, response) {
         upload.single("newsImage");
         let { newsTitle, newsText, newsType } = request.body;
-
-
 
         try {
             await News.create({
@@ -60,11 +66,7 @@ module.exports = {
                             id_noticias: result.id
                         });
                     });
-
-
                 });
-
-
         } catch (e) {
             return response.json({ text: e.message, status: false });
         }
@@ -72,7 +74,4 @@ module.exports = {
         return response.json({ text: "Sucesso.", status: true });
 
     },
-
 }
-
-// select id from "News" order by id DESC limit 1
