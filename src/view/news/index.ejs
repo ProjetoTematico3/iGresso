@@ -2,100 +2,124 @@
     <div class="container">
         <div class="row bg-dark-grey-3">
 
-            <div class="col-md-12">
+            <h1 class="display-4 text-center color-purple text-uppercase mb-5 mt-5">Notícias</h1>
 
-                <h1 class="display-4 text-center color-purple text-uppercase mb-5 mt-5">Notícias</h1>
-                <% if (!!locals.newsList && newsList.length> 0){ %>
-                    <% for (let index=0; index < newsList.length; index++){ const title=newsList[index].titulo; const
-                        description=newsList[index].texto; const
-                        image=`/src/public/images/news/${newsList[index].id}${newsList[index].Images[0].dataValues.diretorio}`;
-                        const type=newsList[index].tipo; const News={ title, description, image, type }; %>
+            <% if (!!locals.newsList && newsList.length> 0){
+            
+                let newsNormal = [];
+                let newsAside = [];
+                let newsPost = [];
+    
+                for (let index=0; index < newsList.length; index++){ 
+                        const title=newsList[index].titulo; 
+                        const description=newsList[index].texto; 
+                        const image=`/src/public/images/news/${newsList[index].id}${newsList[index].Images[0].dataValues.diretorio}`;
+                        const type=newsList[index].tipo;
+                        const news={ title, description, image, type };
+                    
+                        
+                        if (news.type == 0){
+                            newsNormal.push(news); 
+                        } else{
+                            if (news.type == 1){
+                                newsAside.push(news); 
+                            } else{
+                                newsPost.push(news);
+                            }
+                        }
 
-                        <% if (News.type==2) { %>
-                            <div class="d-flex justify-content-between">
-                                <div class="col-md-8">
-                                    <section id="primary">
-                                        <div class="card bg-dark text-white card-container-custom w-70">
-                                            <img class="card-img w-70" src="<%= News.image %>" alt="<%= News.title %>">
-                                            <div class="card-img-overlay card-body d-flex">
-                                                <div class="align-self-end card-img-overlay-custom d-none d-md-block">
-                                                    <h5 class="card-title d-block">
-                                                        <%= News.title %>
-                                                    </h5>
-                                                    <p class="card-text">
-                                                        <%= News.description %>
-                                                    </p>
-                                                </div>
-                                            </div>
+                        console.log(newsNormal[2]);
+
+                        
+
+                       
+                }%>
+
+
+
+                <div class="d-flex justify-content-center">
+                    <div class="col-md-8 ms-4">
+                        <section id="primary">
+                            <%  for (let index=0; index < newsPost.length; index++){    %>
+                                <div class="card bg-dark text-white card-container-custom w-70 h-20 m-2">
+                                    <img class="card-img" src="<%= newsPost[index].image  %>" alt="<%= newsPost[index].title %>">
+                                    <div class="card-img-overlay card-body d-flex">
+                                        <div class="align-self-end card-img-overlay-custom d-none d-md-block">
+                                            <h5 class="card-title d-block">
+                                                <%= newsPost[index].title  %>
+                                            </h5>
+                                            <p class="card-text">
+                                                <%= newsPost[index].description  %>
+                                            </p>
                                         </div>
-                                    </section>
+                                    </div>
                                 </div>
                                 <% } %>
-
-                                    <% if (News.type==1){ %>
-                                        <div class="col-md-4">
-
-
-                                            <div class="card-aside mx-4">
-                                                <h3 class="color-purple">
-                                                    <%= News.title %>
-                                                </h3>
-
-                                                <div class="card-img">
-                                                    <img class="img-fluid" width="200" height="200" src="<%= News.image %>" alt="<%= News.title %>">
-                                                </div>
-                                                <div class="card-aside-content mt-2">
-                                                    <span class="text-light">
-                                                        <%= News.description %>
-                                                    </span>
-                                                </div>
+                        </section>
+                    </div>
 
 
-                                            </div>
 
+                    <div class="col-md-4">
 
-                                        </div>
+                        <%  for (let index=0; index < newsAside.length; index++){    %>
+                            <div class="card-aside ms-4">
+                                <h3 class="color-purple fs-2">
+                                    <%= newsAside[index].title  %>
+                                </h3>
+
+                                <div class="card-img w-20 h-20 pe-3">
+                                    <img class="img-fluid" src="<%= newsAside[index].image  %>" alt="<%= newsAside[index].title  %>">
+                                </div>
+                                <div class="card-aside-content mt-2">
+                                    <span class="text-light fs-4">
+                                    <%= newsAside[index].description  %></span>
+                                </div>
                             </div>
                             <% } %>
-
-
-                                <% if (News.type==0){ %>
-
-                                    <div class="col-md-4 px-4">
-                                        <section id="secondary" class="my-4">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="card-img">
-                                                        <img class="img-fluid" width="200" height="200" src="<%= News.image  %> " alt="<%= News.title %>">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-
-                                                    <div id="card-news">
-                                                        <h3 class="color-purple">
-                                                            <%= News.title %>
-                                                        </h3>
-                                                        <span class="text-light">
-                                                            <%= News.description %>
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </section>
-
-                                    </div>
-
-                                    <% } %>
-
-
-
-
-                                        <% } %>
-            </div>
+                    </div>
+                </div>
         </div>
+
+        <div class="row bg-dark-grey-3">
+
+
+
+            <div class="col-md-6 mt-4 ms-3">
+                <section id="secondary">
+
+                    <div class="row">
+                        <%  for (let index=0; index < newsNormal.length; index++){    %>
+                            <div class="col-md-6">
+
+                                <div class="card-img w-70 h-20">
+                                    <img class="img-fluid" src="<%= newsNormal[index].image %> " alt=" <%= newsNormal[index].title  %>">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div id="card-news">
+                                    <h3 class="color-purple fs-2">
+                                        <%= newsNormal[index].title  %>
+                                    </h3>
+                                    <span class="text-light fs-4">
+                                        <%= newsNormal[index].description  %>
+                                                        </span>
+                                </div>
+
+                            </div>
+                            <% } %>
+                    </div>
+
+                </section>
+
+            </div>
+
+
+
+
+        </div>
+        <% } %>
     </div>
-    <% } %>
-        <%- include('../layout/footer') %>
+    <%- include('../layout/footer') %>
