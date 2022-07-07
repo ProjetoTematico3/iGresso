@@ -14,10 +14,6 @@ module.exports = {
             ]
         });
 
-        const newsListAside = Array(newsList).find(s => { s.tipo == 1 });
-
-        console.log(newsListAside);
-
         return response.render('news/index', { title: "Noticias", newsList: newsList });
     },
 
