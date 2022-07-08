@@ -44,8 +44,25 @@ module.exports = {
                 { model: Schedule }
             ]
         });
+        var ngroup = [];
+        for (let index = 0; index <  movie.Schedules.length; index++) {
+            const Schedules =  movie.Schedules[index];
 
-        return response.render('movie/movie', { title: movie.nome, movie: movie });
+            const { horario } = Schedules;
+            const data = await formatDate(horario);
+            var checkItem = ngroup.find(s => s.data == data);
+            if(checkItem)
+                checkItem.Schedule.push(Schedules);
+            else
+                ngroup.push({data: data, Schedule: [Schedules]})
+            
+        }
+          
+          
+
+
+
+        return response.render('movie/movie', { title: movie.nome, movie: movie, groupByDate: ngroup });
     },
 
     async addReview(request, response) {
@@ -95,4 +112,14 @@ module.exports = {
 
 
 
+}
+
+
+const formatDate = async (data) =>{
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(), 
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+    return diaF+"/"+mesF+"/"+anoF;
 }
