@@ -1,3 +1,4 @@
+
 $(() => {
 
 
@@ -64,11 +65,99 @@ $(() => {
         selectSeat(e.currentTarget);
     });
 
+    $("#app-page").on('keyup', '.i-price-igress', (e) => {
+        let $current_input = $(e.currentTarget);
+        if (!$current_input.val()) {
+            $current_input.val('0');
+            return;
+        }
+        let qtd_input = parseInt($current_input.val());
+        if (qtd_input < 0) {
+            $current_input.val('0');
+            return;
+        }
+        let qtd_selected_prices = $('.i-price-igress').map((i, e) => { return parseInt($(e).val()) }).get().reduce((a, b) => a + b, 0);
+        let qtd_selected_seats = getSelectedSeats().length;
+        let qtd_available_seats = qtd_selected_seats - qtd_selected_prices;
+        if (qtd_available_seats <= 0) {
+
+        }
 
 
+    });
 
+    $("#app-page").on('keypress', '.i-price-igress', function (evt) {
+        evt.preventDefault();
+    });
+
+    $("#app-page").on('click', '.create-order', (e) => {
+        createOrder(e.currentTarget);
+    });
+
+    $("#app-page").on('click', '.btn-cancel-ingress', (e) => {
+        cancelOrder($(e.currentTarget).data('id'));
+    });
 
 })
+
+const cancelOrder = (id) => {
+
+    bootbox.confirm({
+        closeButton: false ,
+        title: "Cancelar ingresso",
+        message: `Deseja Cancelar o ingresso #${id}?`,
+        buttons: {
+            confirm: {
+                label: 'Sim',
+                className: 'btn-purple'
+            },
+            cancel: {
+                label: 'Não',
+                className: 'btn-info'
+            }
+        },
+        callback: function (result) {
+            if(result){
+                $.getJSON('/ingress/cancel', {id: id}, (data) =>{
+                    Alert(data.text, data.status);
+                    if(data.status)
+                        window.location.reload;
+                })
+            }
+        }
+    });
+
+   
+
+}
+
+const createOrder = (elem) => {
+    var order = {};
+    const id_payment_method = parseInt($(elem).data('paymentmethod'));
+    order.id_payment_method = id_payment_method;
+    order.seats = getSelectedSeats();
+    order.tipo_ingresso = getSelectedIngressType();
+    order.combos = getSelectedCombos();
+    order.id_filme = parseInt($('.card-movie').data('id'));
+    order.id_cinema = $('#id_cinema').val();
+    order.id_schedule = $('#id_schedule').val();
+
+    $.post("/ingress/buy", { order: order }, (data) => { 
+
+       
+        if(data.status){
+            Alert(data.text, data.status);
+        }else if(data.unauthorized){
+            window.location = "/Login?ConfirmOrder=true";
+        }else
+            Alert(data.text, data.status);
+        
+            
+
+    }, 'json')
+
+
+};
 
 const selectSeat = (elem) => {
     if ($(elem).hasClass('selected'))
@@ -87,6 +176,33 @@ const showSelectedSeats = () => {
     let strSeats = selectedSeats.join(', ');
     $('#v-pills-assentos-tab').append(`<span class="selected-seats">${strSeats}</span>`);
 }
+
+const getSelectedSeats = () => {
+    let selectedSeats = $('.seat.selected').map((i, e) => {
+        return $(e).data('id');
+    }).get();
+    return selectedSeats;
+}
+
+const getSelectedIngressType = () => {
+    return $('.i-price-igress')
+        .map((i, e) => {
+            return {
+                tipo_ingresso: $(e).data("tipoingresso"),
+                qtd: parseInt($(e).val())
+            }
+        }).get().filter(s => s.qtd > 0);
+};
+
+const getSelectedCombos = () => {
+    return $('.qtd-combo')
+        .map((i, e) => {
+            return {
+                id_combo: $(e).data("idcombo"),
+                qtd: parseInt($(e).val())
+            }
+        }).get().filter(s => s.qtd > 0);
+};
 
 
 const summernoteInit = () => {
@@ -203,11 +319,11 @@ const sendNews = () => {
         contentType: false,
         enctype: 'multipart/form-data',
         type: 'POST',
-        success: function(data) {
+        success: function (data) {
             Alert(JSON.stringify(data.text), true);
             clearNews();
         },
-        fail: function(data) {
+        fail: function (data) {
             Alert(JSON.stringify(data.text), false);
         }
     });
@@ -226,7 +342,7 @@ const clearNews = () => {
 const setPreview = (image) => {
     if (image) {
         let reader = new FileReader();
-        reader.onload = function() {
+        reader.onload = function () {
             $("#preview-image").attr("src", reader.result);
         }
         reader.readAsDataURL(image);

@@ -61,13 +61,7 @@ Movie.hasMany(Review, {
     foreignKey: "id_filme"
 });
 
-Movie.hasMany(Schedule, {
-    foreignKey: "id_filme"
-});
 
-Schedule.belongsTo(Movie, {
-    foreignKey: "id_filme"
-});
 
 
 module.exports = Movie;

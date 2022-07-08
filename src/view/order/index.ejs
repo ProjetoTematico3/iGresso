@@ -1,0 +1,68 @@
+<%- include('../layout/header') %>
+
+<div class="col-md-12">
+    <h3 class="text text-purple" style="margin-bottom: 3rem;"> MEUS INGRESSOS </h3>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+      </button>
+    <div class="ingress-movie-info-container">
+
+        <div class="ingress-movie-info-poster">
+            <div class="card-movie" data-id="1">
+                <img src="/src/public/images/1/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg" alt="">
+                <div class="card-movie-info">
+                    <div class="movie-rating pg-sm rating-pull-right pg-14 ">
+                        14
+                    </div>
+                </div>
+                <div class="card-movie-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingress-movie-info-details">
+            <div class="ingress-movie-info-movie-name">
+                Doutor Estranho no Multiverso da Loucura
+            </div>
+            <div class="ingress-movie-info-theater">
+                <i class="fa-solid fa-location-dot"></i>
+                Cinépolis - Sala 3
+            </div>
+            <div class="ingress-movie-info-theater">
+                <i class="fa-solid fa-calendar-days"></i>
+                30/06/2022
+                    22:00
+            </div>
+            G14, G15 <br>
+            <div class="ingress-movie-info-language" style=" font-size: 9pt; padding: 3px; margin-top: 4rem;">
+                Legendado
+            </div>
+
+            <button class="btn btn-danger" style="margin-top: 1rem;">Cancelar Ingresso</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cancelamento de Ingresso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         Deseja cancelar esse ingresso?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-purple">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include('../layout/footer') %>

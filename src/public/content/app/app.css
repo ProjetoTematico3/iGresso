@@ -8,6 +8,11 @@
     --gradient-90deg: linear-gradient(90deg, rgba(13, 243, 255, 1) 0%, rgba(41, 177, 255, 1) 14.9%, rgba(28, 104, 255, 1) 32.2%, rgba(123, 77, 240, 1) 46.7%, rgba(190, 51, 255, 1) 64.3%, rgba(202, 24, 222, 1) 85.1%, rgba(252, 5, 231, 1) 100%);
 }
 
+.modal-content{
+    background: var(--dark-grey-1) !important;
+    color: white !important;
+}
+
 a {
     color: white !important;
 }
@@ -525,6 +530,11 @@ body {
     margin-left: 0.2rem;
 }
 
+.btn-purple{
+    background: var(--purple) !important;
+    color: white !important;
+}
+
 .fa-star.marked {
     color: var(--purple) !important;
 }
@@ -692,7 +702,7 @@ body {
 }
 
 .col-assentos div{
-    background: var(--grey);
+    background: var(--dark-blue);
     border-radius: 360px;
     text-align: center;
     font-size: 7pt;
@@ -704,12 +714,17 @@ body {
     cursor: pointer;
 }
 
-.col-assentos div:hover{
+.col-assentos div:hover:not(.seat-disabled){
     background: var(--purple);
 }
 
 .col-assentos div.selected{
     background: var(--purple);
+}
+
+.seat-disabled{
+    background: var(--grey) !important;
+    cursor: not-allowed !important;
 }
 
 .tab-content{

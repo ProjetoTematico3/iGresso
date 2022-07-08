@@ -1,0 +1,110 @@
+<%- include('../layout/header') %>
+
+    <div class="col-md-12">
+        <h3 class="text text-purple" style="margin-bottom: 3rem;"> MEUS INGRESSOS </h3>
+    
+
+        <div class="col-md-12">
+            <div class="row">
+                <% 
+                    for( let index = 0; index < myOrders.length; index++ ) { const order=myOrders[index]; 
+                        const Movie = Movies.find(s => s.id == order.id_filme)
+                        const poster_image=Movie.Images.find(s=> s.tipo_imagem == 2).diretorio;
+                        const poster_image_src = `/src/public/images/${Movie.id}${poster_image}`;
+                        var rating = getRatingClass(Movie.classificacao);
+                        const Schedule = Schedules.find(s => s.id == order.id_schedule)
+                        console.log(Schedule, Schedules)
+                        %>
+
+                        <div class="col-lg-3 col-md-12" >
+                            <div style="    background: #333238;border-radius: 10px; padding:0.5rem ">
+                             
+                            <small style="color: white">#<%=order.id%></small>
+                            <div style="display: flex;">
+                                <div class="ingress-movie-info-poster">
+                                    <div class="card-movie" data-id="<%= Movie.id %>">
+                                        <img src="<%=poster_image_src%>" alt="">
+                                        <div class="card-movie-info">
+                                            <div class="movie-rating pg-sm rating-pull-right <%= rating %> ">
+                                                <%= Movie.classificacao %>
+                                            </div>
+                                        </div>
+                                        <div class="card-movie-stars">
+                                            <%- getRatingStars(getAVGReview(Movie.Reviews)) %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ingress-movie-info-details">
+                                    <div class="ingress-movie-info-movie-name">
+                                        <%= Movie.nome %>
+                                    </div>
+                                    <input type="hidden" id="id_order" value="<%=order.id%>">
+                                    <div class="ingress-movie-info-theater">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <%=MovieTheaters.find(s => s.id == Schedule.Room.id_cinema).nome %> -  <%= Schedule.Room.identificacao %>
+                                        
+                                        <% 
+                                            var iOrder =  order.Items.map((s)=> s.id_ingresso);
+                                            var ingresses = Ingressos.filter(s => iOrder.includes(s.id));
+                                            ingresses = ingresses.map((x)=> { return x.Seat.identificacao})
+                                            console.log(ingresses)
+                                        %>
+
+                                            <span style="margin-top: 1rem; display: block; font-size: 12pt;"><%=ingresses.join(', ') %></span>
+                                                
+                                    </div>
+                                    <div class="ingress-movie-info-theater">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <%= formatDate2(new Date(Schedule.data)) %>
+                                            <%= formatHour(Schedule.horario) %>
+                                    </div>
+                                    <div class="ingress-movie-info-language"
+                                        style=" font-size: 9pt; padding: 3px; margin-top: 3rem;">
+                                        <%= Schedule.idioma %>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger btn-cancel-ingress" data-id="<%=order.id%>" style="width: 100%;  margin-top: 2rem;">Cancelar Ingresso</button>
+                               </div>
+                 
+
+                        </div>
+
+
+
+                        <% } %>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cancelamento de Ingresso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja cancelar esse ingresso?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-purple">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../layout/footer') %>

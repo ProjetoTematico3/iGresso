@@ -8,8 +8,9 @@ module.exports = {
 
     async login(request, response) {
 
-        const {fail} = request.query;
-        return response.render('login/login', { title: "Login", fail: fail });
+        const {fail, ConfirmOrder} = request.query;
+
+        return response.render('login/login', { title: "Login", fail: fail, ConfirmOrder: ConfirmOrder });
     },
 
 

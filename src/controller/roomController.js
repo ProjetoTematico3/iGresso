@@ -21,6 +21,7 @@ module.exports = {
         colunas = request.body.column;
         assentos = request.body.capacity;
         id_movieTheater = request.body.selectMovieTheater;
+        
 
         try {
             await Room.create({
@@ -29,6 +30,7 @@ module.exports = {
                 assentos: assentos,
                 id_cinema: id_movieTheater
             }).then(async (room) => {
+
 
                 var min_letter = 65
                 var max_letter = 90;

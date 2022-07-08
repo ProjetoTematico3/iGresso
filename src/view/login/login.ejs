@@ -28,8 +28,13 @@
                     <div class="logo-login">
                         <div class="igresso-logo"></div>
                     </div>
-                   
-                    <form class="form-horizontal" method="POST" action="/Login" >
+                    
+
+                    <%if(locals.ConfirmOrder && ConfirmOrder == "true"){ %>
+                        <form class="form-horizontal" method="POST" action="/Login?ConfirmOrder=true" >
+                    <%} else {%>
+                        <form class="form-horizontal" method="POST" action="/Login" >
+                    <% }%>
 
                         <input type="email" class="form-control i-input i-input-purple" placeholder="e-mail" id="email" name="email"
                             autocomplete="off"> 

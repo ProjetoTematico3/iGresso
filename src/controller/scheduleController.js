@@ -22,7 +22,7 @@ module.exports = {
         time = date + ' ' + time + ':00';
         let result = Date.parse(time);
 
-        try {
+       
             await Schedule.create({
                 data: schedule.date,
                 horario: result,
@@ -31,11 +31,8 @@ module.exports = {
                 id_sala: schedule.roomId,
                 tipo_agendamento: schedule.frontCover
             });
-        } catch (e) {
-            return response.json({ text: e.message, status: false });
-        }
-        return response.redirect("/");
-        //return response.json({ text: "Agendamento realizado com sucesso", status: true });
+   
+        return response.redirect('/')
 
     }
 

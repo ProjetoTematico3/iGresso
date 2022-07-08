@@ -14,7 +14,7 @@
                         <div class="ingress-movie-info-container">
 
                             <div class="ingress-movie-info-poster">
-                                <div class="card-movie" data-id="<%= scheduleInfo.Movie.id %> ">
+                                <div class="card-movie" data-id="<%= scheduleInfo.Movie.id %>">
                                     <img src="<%=poster_image_src%>" alt="">
                                     <div class="card-movie-info">
                                         <div class="movie-rating pg-sm rating-pull-right <%= rating %> ">
@@ -31,6 +31,8 @@
                                 <div class="ingress-movie-info-movie-name">
                                     <%= scheduleInfo.Movie.nome %>
                                 </div>
+                                <input type="hidden" id="id_cinema" value="<%=theater.id%>">
+                                <input type="hidden" id="id_schedule" value="<%=scheduleInfo.id%>">
                                 <div class="ingress-movie-info-theater">
                                     <i class="fa-solid fa-location-dot"></i>
                                     <%= theater.nome %> - <%= scheduleInfo.Room.identificacao %>
@@ -74,13 +76,20 @@
 
                                 <div class="grid-assentos">
                                     <div class="grid">
-                                        <% var Seats=groupSeats(scheduleInfo.Room.Seats); console.log('aaaaaa') %>
+                                        <% var Seats=groupSeats(scheduleInfo.Room.Seats); console.log(Seats) %>
 
                                             <% for( let index=0; index < Seats.length; index++ ) { var
                                                 col=Seats[index].Seats; %>
                                                 <div class="col-assentos">
-                                                    <% for( let jndex=0; jndex < col.length; jndex++ ) { %>
+                                                    <% for( let jndex=0; jndex < col.length; jndex++ ) {
+                                                        
+                                                        var checkSeat = SeatsN.find(s => s == col[jndex].id);
+                                                        if(checkSeat){ %>
+                                                            <div class="seat-disabled">
+                                                        <%  }else{ %>
+                                                       
                                                         <div class="seat" data-id="<%=col[jndex].id%>">
+                                                            <% } %>
                                                             <%=col[jndex].identificacao%>
                                                         </div>
                                                         <% } %>
@@ -109,7 +118,7 @@
                                                 <span class="preco-ingresso">R$ 40,00</span>
                                             </div>
                                             <div class="col-md-3">
-                                                <input class="form-control" placeholder="Qtd." type="number" value="0">
+                                                <input class="form-control i-price-igress" placeholder="Qtd." type="number" value="0" min="0" data-tipoingresso="0">
                                             </div>
                                         </div>
 
@@ -119,7 +128,7 @@
                                                 <span class="preco-ingresso">R$ 20,00</span>
                                             </div>
                                             <div class="col-md-3">
-                                                <input class="form-control" placeholder="Qtd." type="number" value="0">
+                                                <input class="form-control i-price-igress" placeholder="Qtd." type="number" value="0" min="0" data-tipoingresso="1">
                                             </div>
                                         </div>
 
@@ -164,7 +173,7 @@
                                                     </div>
 
                                                     <div style="margin: auto; ">
-                                                        <input class="form-control" placeholder="Qtd." type="number"
+                                                        <input class="form-control qtd-combo" placeholder="Qtd." type="number" data-idcombo="<%=combo.id%>"
                                                             value="0">
 
                                                     </div>
@@ -228,7 +237,7 @@
                                                         </div>
 
                                                         <div class="col-md-12">
-                                                            <div class="admin-btn" style="height: 4rem;margin: 0;margin-top: 7rem;display: block; text-align: center; font-size: 15pt;">
+                                                            <div class="admin-btn create-order" style="height: 4rem;margin: 0;margin-top: 7rem;display: block; text-align: center; font-size: 15pt;" data-paymentmethod="1">
                                                                 Finalizar compra
                                                             </div>
                                                         </div>
@@ -243,7 +252,7 @@
                                                 </div>
 
                                                 <div class="col-md-12">
-                                                    <div class="admin-btn" style="height: 4rem;margin: 0;margin-top: 7rem;display: block; text-align: center; font-size: 15pt;">
+                                                    <div class="admin-btn create-order" style="height: 4rem;margin: 0;margin-top: 7rem;display: block; text-align: center; font-size: 15pt;" data-paymentmethod="2">
                                                         Finalizar compra
                                                     </div>
                                                 </div>

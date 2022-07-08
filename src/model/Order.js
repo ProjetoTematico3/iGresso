@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 const db = require('../database');
 const PaymentMethod = require('./PaymentMethod');
 const Item = require('./Item');
-const Combo = require('./Combo');
-
+const Schedule = require('./Schedule');
+const Movie = require('./Movie');
 const Order = db.define('Order', {
     id: {
         type: Sequelize.INTEGER,
@@ -17,10 +17,22 @@ const Order = db.define('Order', {
         allowNull: false,
     },
 
-    dt_filme: {
-        type: Sequelize.DataTypes.DATE,
+    id_usuario:{
+        type: Sequelize.INTEGER,
         allowNull: false,
     },
+
+    id_filme:{
+        type: Sequelize.INTEGER,
+    },
+
+    id_schedule:{
+        type: Sequelize.INTEGER,
+    },
+
+    status:{
+        type: Sequelize.INTEGER // 0- ok, 1 cancelado
+    }
 
 });
 
@@ -35,8 +47,13 @@ Order.hasMany(Item, {
 });
 
 
-Order.hasMany(Combo, {
-    foreignKey: 'id_pedido'
-});
+
+
+
+
+
+
+
+
 
 module.exports = Order;

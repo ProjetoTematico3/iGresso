@@ -16,6 +16,7 @@ const Adress = require('./model/Adress');
 const MovieTheater = require('./model/MovieTheater');
 const Product = require('./model/Product');
 const Combo = require('./model/Combo');
+const PaymentMethod = require('./model/PaymentMethod');
 
 // Repositorio com todas as models
 const repository = require('./model/modelRepository');
@@ -49,7 +50,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/view');
 //db.sync({ force: true }); 
 
-// // Cria produtos senão existir
+// Cria produtos se não existir
 // (async() => { 
 //     try {
 //         var checkUser = await Product.findByPk(1);
@@ -149,7 +150,7 @@ app.set('views', __dirname + '/view');
 //     }
 // })();
 
-// Cria usuário Admin senão existir
+// //Cria usuário Admin se não existir
 // (async() => { 
 //     try {
 //         var checkUser = await User.findByPk(1);
@@ -166,7 +167,7 @@ app.set('views', __dirname + '/view');
 //     }
 // })();
 
-// // Cria Endereço senão existir
+// // Cria Endereço se não existir
 // (async() => {
 //     try {
 //         var checkAdress = await Adress.findByPk(1);
@@ -198,9 +199,27 @@ app.set('views', __dirname + '/view');
 // })();
 
 
+// // Cria Métodos de Pagamento se não existir
+// (async() => { 
+//     try {
+//         var checkPay= await PaymentMethod.findByPk(1);
+//         if (checkPay == null) {
+//             await PaymentMethod.create({
+//                 tipo: "Cartão de Crédito"
+//             });
+//             await PaymentMethod.create({
+//                 tipo: "PIX"
+//             });
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })();
+
+
 // Derruba o banco e o recria com todas as models e inserts
-//  db.sync({ force: true }); 
+//db.sync({ force: true }); 
 
 //  Busca na API os filmes para serem inseridos no banco
-// appMovies.startService().catch(err => console.error(err));
+//appMovies.startService().catch(err => console.error(err));
 app.listen(2078);

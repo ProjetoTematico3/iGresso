@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
 const Room = require('./Room');
-
+const Movie = require('./Movie');
 const Schedule = db.define('Schedule', {
     id: {
         type: Sequelize.INTEGER,
@@ -44,4 +44,16 @@ Room.hasMany(Schedule, {
 Schedule.belongsTo(Room, {
     foreignKey: "id_sala"
 });
+
+Movie.hasMany(Schedule, {
+    foreignKey: "id_filme"
+});
+
+Schedule.belongsTo(Movie, {
+    foreignKey: "id_filme"
+});
+
+// Order.hasMany(Schedule, {
+//     foreignKey: 'id_schedule'
+// });
 module.exports = Schedule;
