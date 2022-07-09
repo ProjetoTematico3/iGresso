@@ -52,7 +52,6 @@ Movie.hasMany(Schedule, {
 Schedule.belongsTo(Movie, {
     foreignKey: "id_filme"
 });
-
 // Order.hasMany(Schedule, {
 //     foreignKey: 'id_schedule'
 // });

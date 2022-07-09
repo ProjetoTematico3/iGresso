@@ -3,7 +3,6 @@ const db = require('../database');
 const Team = require('./Team');
 const Image = require('./Image');
 const Review = require('./Review');
-const Schedule = require('./Schedule');
 
 const Movie = db.define('Movie', {
     id: {
@@ -41,6 +40,7 @@ const Movie = db.define('Movie', {
         type: Sequelize.INTEGER,
         allowNull: true,
     },
+    
 });
 
 /*Movie.belongsTo(Team, {

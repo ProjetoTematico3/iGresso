@@ -1,4 +1,8 @@
 
+
+
+
+
 $(() => {
 
 
@@ -132,6 +136,7 @@ const cancelOrder = (id) => {
 }
 
 const createOrder = (elem) => {
+    debugger;
     var order = {};
     const id_payment_method = parseInt($(elem).data('paymentmethod'));
     order.id_payment_method = id_payment_method;
@@ -142,19 +147,58 @@ const createOrder = (elem) => {
     order.id_cinema = $('#id_cinema').val();
     order.id_schedule = $('#id_schedule').val();
 
-    $.post("/ingress/buy", { order: order }, (data) => { 
+    if(id_payment_method == 2){
+        bootbox.confirm({
+            closeButton: false ,
+            title: "Pagamento Via PIX",
+            message: `<img src="/src/public/content/qrcode.png"/ style="width: 100%;     background: white;">`,
+            buttons: {
+                confirm: {
+                    label: 'Confirmar',
+                    className: 'btn-purple'
+                },
+                cancel: {
+                    label: 'Cancelar',
+                    className: 'btn-info'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                        $.post("/ingress/buy", { order: order }, (data) => { 
 
-       
-        if(data.status){
-            Alert(data.text, data.status);
-        }else if(data.unauthorized){
-            window.location = "/Login?ConfirmOrder=true";
-        }else
-            Alert(data.text, data.status);
-        
+                        
+                            if(data.status){
+                                Alert(data.text, data.status);
+                                window.location = "/ingress/myOrders"
+                            }else if(data.unauthorized){
+                                window.location = "/Login?ConfirmOrder=true";
+                            }else
+                                Alert(data.text, data.status);
+                            
+                                
+
+                        }, 'json')
+                }
+            }
+        });
+    }
+    else{
+        $.post("/ingress/buy", { order: order }, (data) => { 
+
+                        
+            if(data.status){
+                Alert(data.text, data.status);
+                window.location = "/ingress/myOrders"
+            }else if(data.unauthorized){
+                window.location = "/Login?ConfirmOrder=true";
+            }else
+                Alert(data.text, data.status);
             
+                
 
-    }, 'json')
+        }, 'json')
+    }
+
 
 
 };
@@ -277,15 +321,16 @@ const setMarker = (elem) => {
 }
 
 const sendReview = () => {
+    debugger
     const id_movie = $('#write-review').data('id');
     const text = $('#text-review').val();
     const rating = $('#write-review .review-star.marked').length;
     $.post('/Movie/AddReview', { text: text, rating: rating, id_movie: id_movie }, (data) => {
+        debugger
         Alert(data.text, data.status);
         $('#text-review').val('');
-        src / public / content / app / app.js
         $('#write-review .review-star.marked').removeClass('marked');
-        return loadReviews(id_movie);
+        loadReviews(id_movie);
     }, 'json');
 
 }

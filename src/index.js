@@ -221,5 +221,5 @@ app.set('views', __dirname + '/view');
 //db.sync({ force: true }); 
 
 //  Busca na API os filmes para serem inseridos no banco
-//appMovies.startService().catch(err => console.error(err));
+appMovies.startService().catch(err => console.error(err));
 app.listen(2078);

@@ -12,8 +12,20 @@ module.exports = {
             include: 'Movie',
         });
 
+      
+
+        var resArr = [];
+
         for (let index = 0; index < scheduleList.length; index++) {
-            movieList[index] = await Movie.findByPk(scheduleList[index].Movie.id, {
+            const element = scheduleList[index];
+            var check = resArr.find(s => s.id_filme ==element.id_filme );
+            if(!check)
+                resArr.push(element);
+            
+        }
+
+        for (let index = 0; index < resArr.length; index++) {
+            movieList[index] = await Movie.findByPk(resArr[index].Movie.id, {
                 include: [
                     { model: Review },
                     { model: Image }
@@ -21,7 +33,7 @@ module.exports = {
             });
         }
 
-        return response.render('home/index', { title: "Página Inicial", scheduleList: scheduleList, movieList: movieList });
+        return response.render('home/index', { title: "Página Inicial", scheduleList: resArr, movieList: movieList });
     },
 
 }

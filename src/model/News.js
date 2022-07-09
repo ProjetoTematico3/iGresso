@@ -15,7 +15,7 @@ const News = db.define('New', {
     },
 
     texto: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(65535),
         allowNull: false,
     },
 

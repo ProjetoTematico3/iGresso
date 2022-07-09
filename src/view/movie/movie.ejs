@@ -81,7 +81,9 @@
                              <% for( let i = 0; i < groupByDate.length; i++ ) {
                                 const date = groupByDate[i];  %>
                                 <div style="display: block; color: var(--purple);padding: 0.5rem 0; font-size: 12pt;border-bottom: 1px solid var(--purple);"><%= date.data %></div>
+                                <h6 class="text-purple"><%=date.idioma%></h6>
                                 <div class="schedules">
+                                 
                                 <% for( let index=0; index < date.Schedule.length; index++ ) { const
                                 schedule=date.Schedule[index]; %>
                                 <div class="schedule-hours">

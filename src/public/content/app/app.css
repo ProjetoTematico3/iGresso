@@ -605,9 +605,9 @@ body {
     width: 30% !important;
 }
 
-#ingress-tabs-content{
+/* #ingress-tabs-content{
     padding-left: 1rem !important;
-}
+} */
 
 .ingress-movie-info-container{
     position: absolute;
@@ -799,3 +799,27 @@ body {
 /* .btn {
     color: #ffffff;
 } */
+
+@media (max-width: 766px) {
+
+    .buy-container{
+        position: absolute !important;
+        left: 0;
+        right: 0;
+    }
+	#ingress-tabs{
+        position: absolute !important;
+        width: 100% !important;
+    }
+
+    #ingress-tabs-content{
+        padding: 0 !important;
+        position: absolute;
+        width: 100% !important;
+        top: 595px !important
+    }
+
+    .movie-title{
+        font-size: 2rem;
+    }
+}

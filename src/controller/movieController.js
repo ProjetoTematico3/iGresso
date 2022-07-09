@@ -50,11 +50,11 @@ module.exports = {
 
             const { horario } = Schedules;
             const data = await formatDate(horario);
-            var checkItem = ngroup.find(s => s.data == data);
+            var checkItem = ngroup.find(s => s.data == data && s.idioma == Schedules.idioma);
             if(checkItem)
                 checkItem.Schedule.push(Schedules);
             else
-                ngroup.push({data: data, Schedule: [Schedules]})
+                ngroup.push({data: data, idioma:Schedules.idioma,  Schedule: [Schedules]})
             
         }
           

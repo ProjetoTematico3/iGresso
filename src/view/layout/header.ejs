@@ -51,14 +51,14 @@
                             <a class="nav-link" href="/Movies">Filmes</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Meus ingressos</a>
-                        </li>
-
-
-
+                      
                         <% if (!!locals.user) {%>
-                            <% if (user.tipo_usuario==0) { %>
+                            <% if (user.tipo_usuario==0 ||user.tipo_usuario==3 ) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ingress/myorders">Meus ingressos</a>
+                            </li>
+                            <% } %>
+                            <% if (user.tipo_usuario==0 ||user.tipo_usuario==2 ) { %>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/Admin">Administração</a>
                                 </li>
