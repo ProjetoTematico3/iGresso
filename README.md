@@ -21,6 +21,8 @@ Esse projeto foi feito com as seguinte tecnologias:
 
 # 🏃 Como iniciar o projeto?
 
+0. Possuir o PostGress instalado na estação e configurado na porta 5432
+
 1. Abrir terminal do vscode
 
 - npm install   
